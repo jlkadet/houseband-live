@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { Bungee, Cormorant_Garamond, Inter } from "next/font/google";
 
@@ -16,36 +19,47 @@ const inter = Inter({
 });
 
 export default function EpisodesPage() {
+  const [activeVideo, setActiveVideo] = useState<{
+    title: string;
+    youtubeId: string;
+  } | null>(null);
+
   const episodes = [
     {
-      episodeTitle: "Episode 01",
-      subtitle: "Houseband/Live Sessions",
+      episodeTitle: "Episode 01 — Debut Sessions",
+      subtitle: "Houseband/Live",
       videos: [
         {
-          title: "Performance 01",
-          youtubeId: "YOUTUBE_ID_1",
-        },
-        {
-          title: "Performance 02",
-          youtubeId: "YOUTUBE_ID_2",
-        },
-        {
-          title: "Performance 03",
-          youtubeId: "YOUTUBE_ID_3",
+          title: "AK Fields",
+          youtubeId: "pOStmVxCAkU",
         },
       ],
     },
     {
-      episodeTitle: "Episode 02",
-      subtitle: "Houseband/Live Sessions",
+      episodeTitle: "Episode 02 — Imani Waters Session",
+      subtitle: "Houseband/Live",
       videos: [
         {
-          title: "Performance 04",
-          youtubeId: "YOUTUBE_ID_4",
+          title: "Imani Waters",
+          youtubeId: "Pp3C_fHKtMw",
+        },
+      ],
+    },
+    {
+      episodeTitle: "Episode 03 — Live Collective",
+      subtitle: "Houseband/Live",
+      videos: [
+        {
+          title: "Ian Chri$t",
+          youtubeId: "zxgs9gi_88o",
         },
         {
-          title: "Performance 05",
-          youtubeId: "YOUTUBE_ID_5",
+          title: "Nat Harriet",
+          youtubeId: "qqYYwg5OkC0",
+        },
+        {
+          title: "Khalil Da Visionary",
+          youtubeId: "2zn_BgkmK3Y",
         },
       ],
     },
@@ -84,12 +98,12 @@ export default function EpisodesPage() {
               Watch the Archive
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-[#f5ead8]/75">
-              Explore past Houseband/Live episodes and experience the sound,
-              visuals, and collaborative energy behind each session.
+              Explore past Houseband/Live sessions and experience the sound,
+              visuals, and collaborative energy behind each performance.
             </p>
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-16">
             {episodes.map((episode) => (
               <div
                 key={episode.episodeTitle}
@@ -106,28 +120,38 @@ export default function EpisodesPage() {
 
                 <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                   {episode.videos.map((video) => (
-                    <div
+                    <button
                       key={video.youtubeId}
-                      className="overflow-hidden rounded-3xl border border-[#d8a25e]/15 bg-[#120d0b]"
+                      type="button"
+                      onClick={() => setActiveVideo(video)}
+                      className="group overflow-hidden rounded-3xl border border-[#d8a25e]/15 bg-[#120d0b] text-left transition hover:scale-[1.01] hover:border-[#d8a25e]/35"
                     >
-                      <div className="aspect-video w-full">
-                        <iframe
-                          className="h-full w-full"
-                          src={`https://www.youtube.com/embed/${video.youtubeId}`}
-                          title={video.title}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
+                      <div className="relative aspect-video w-full overflow-hidden">
+                        <img
+                          src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                          alt={video.title}
+                          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                         />
+                        <div className="absolute inset-0 bg-black/30 transition group-hover:bg-black/20" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#f5ead8]/40 bg-[#120d0b]/75 backdrop-blur-sm">
+                            <div className="ml-1 h-0 w-0 border-b-[10px] border-l-[16px] border-t-[10px] border-b-transparent border-l-[#f2d3a2] border-t-transparent" />
+                          </div>
+                        </div>
+                        <div className="absolute left-4 top-4 rounded-full border border-[#d8a25e]/30 bg-[#120d0b]/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]">
+                          Watch Now
+                        </div>
                       </div>
-                      <div className="p-4">
-                        <p className="text-sm uppercase tracking-[0.25em] text-[#d8a25e]/80">
-                          Video
+
+                      <div className="p-5">
+                        <p className="text-xs uppercase tracking-[0.25em] text-[#d8a25e]/80">
+                          Live Session
                         </p>
                         <h3 className={`${cormorant.className} mt-2 text-2xl font-semibold`}>
                           {video.title}
                         </h3>
                       </div>
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -135,6 +159,45 @@ export default function EpisodesPage() {
           </div>
         </div>
       </main>
+
+      {activeVideo && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4 py-8 backdrop-blur-sm"
+          onClick={() => setActiveVideo(null)}
+        >
+          <div
+            className="relative w-full max-w-5xl rounded-[2rem] border border-[#d8a25e]/25 bg-[#120d0b] p-4 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setActiveVideo(null)}
+              className="absolute right-4 top-4 z-10 rounded-full border border-[#f5ead8]/20 bg-[#120d0b]/80 px-3 py-2 text-xs uppercase tracking-[0.2em] text-[#f5ead8] transition hover:border-[#d8a25e]/40 hover:text-[#f2d3a2]"
+            >
+              Close
+            </button>
+
+            <div className="mb-4 px-2 pt-2">
+              <p className="text-xs uppercase tracking-[0.25em] text-[#d8a25e]/80">
+                Now Playing
+              </p>
+              <h3 className={`${cormorant.className} mt-2 text-3xl font-semibold`}>
+                {activeVideo.title}
+              </h3>
+            </div>
+
+            <div className="aspect-video w-full overflow-hidden rounded-[1.5rem] border border-[#d8a25e]/15">
+              <iframe
+                className="h-full w-full"
+                src={`https://www.youtube.com/embed/${activeVideo.youtubeId}?autoplay=1`}
+                title={activeVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

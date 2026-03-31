@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Bungee, Cormorant_Garamond, Inter } from "next/font/google";
 
