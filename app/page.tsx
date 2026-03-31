@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Bebas_Neue, Cormorant_Garamond, Inter } from "next/font/google";
-
 const bebas = Bebas_Neue({
   weight: "400",
   subsets: ["latin"],
@@ -71,15 +70,15 @@ export default function Home() {
   ];
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
 
- const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   setStatus("submitting");
 
@@ -108,7 +107,7 @@ export default function Home() {
     } else {
       setStatus("error");
     }
-  } catch (error) {
+  } catch {
     setStatus("error");
   }
 };
