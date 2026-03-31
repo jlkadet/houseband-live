@@ -80,35 +80,34 @@ export default function Home() {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus("submitting");
+  e.preventDefault();
+  setStatus("submitting");
 
-    try {
-      const response = await fetch("https://formspree.io/f/xpqorbzd", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(formData),
+  try {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbxJRQMAkmpOdReRIbTRbuu1pTDYyEjhV_GInsQxudrcKv5F9kgZ6DCvAXuEdUAEON8tWA/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      setStatus("success");
+      setFormData({
+        artistName: "",
+        links: "",
+        email: "",
+        message: "",
       });
-
-      if (response.ok) {
-        setStatus("success");
-        setFormData({
-          artistName: "",
-          links: "",
-          email: "",
-          message: "",
-        });
-      } else {
-        setStatus("error");
-      }
-    } catch (error) {
+    } else {
       setStatus("error");
     }
-  };
-
+  } catch (error) {
+    setStatus("error");
+  }
+};
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
       <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-md">
