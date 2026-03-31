@@ -115,46 +115,6 @@ export default function Home() {
       setStatus("error");
     }
   };
-    const episodes = [
-    {
-      episodeTitle: "Episode 01",
-      subtitle: "Houseband/Live Sessions",
-      videos: [
-        {
-          title: "Performance 01",
-          youtubeId: "pOStmVxCAkU",
-        },
-      ],
-    },
-    {
-      episodeTitle: "Episode 02",
-      subtitle: "Houseband/Live Sessions",
-      videos: [
-        {
-          title: "Performance 02",
-          youtubeId: "Pp3C_fHKtMw",
-        },
-      ],
-    },
-    {
-      episodeTitle: "Episode 03",
-      subtitle: "Houseband/Live Sessions",
-      videos: [
-        {
-          title: "Performance 03",
-          youtubeId: "zxgs9gi_88o",
-        },
-        {
-          title: "Performance 04",
-          youtubeId: "qqYYwg5OkC0",
-        },
-        {
-          title: "Performance 05",
-          youtubeId: "2zn_BgkmK3Y",
-        },
-      ],
-    },
-  ];
 
   return (
     <div className={`${inter.className} min-h-screen bg-[#120d0b] text-[#f5ead8]`}>
@@ -167,22 +127,22 @@ export default function Home() {
           />
 
           <nav className="hidden gap-8 text-sm uppercase tracking-[0.25em] text-[#f5ead8]/75 md:flex">
-  <Link href="/#sessions" className="transition hover:text-[#d8a25e]">
-    Sessions
-  </Link>
-  <Link href="/episodes" className="transition hover:text-[#d8a25e]">
-    Episodes
-  </Link>
-  <Link href="/#artists" className="transition hover:text-[#d8a25e]">
-    Artists
-  </Link>
-  <Link href="/#about" className="transition hover:text-[#d8a25e]">
-    About
-  </Link>
-  <Link href="/#work" className="transition hover:text-[#d8a25e]">
-    Work With Us
-  </Link>
-</nav>
+            <Link href="/#sessions" className="transition hover:text-[#d8a25e]">
+              Sessions
+            </Link>
+            <Link href="/episodes" className="transition hover:text-[#d8a25e]">
+              Episodes
+            </Link>
+            <Link href="/#artists" className="transition hover:text-[#d8a25e]">
+              Artists
+            </Link>
+            <Link href="/#about" className="transition hover:text-[#d8a25e]">
+              About
+            </Link>
+            <Link href="/#work" className="transition hover:text-[#d8a25e]">
+              Work With Us
+            </Link>
+          </nav>
 
           <a
             href="#contact"
@@ -204,8 +164,8 @@ export default function Home() {
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <p className="mb-4 text-sm uppercase tracking-[0.45em] text-[#d8a25e]">
-              Live Music Collective
-            </p>
+  Minneapolis Live Session Collective
+</p>
 
             <h1
               className={`${bungee.className} text-5xl leading-[0.92] tracking-tight md:text-7xl lg:text-[7rem]`}
@@ -219,10 +179,11 @@ export default function Home() {
             </div>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-[#f5ead8]/85 md:text-lg">
-              Professional live sessions with retro soul and artistic edge. We
-              bring musicians together to create immersive performances,
-              collaborative visuals, and a platform artists want to be part of.
-            </p>
+  Houseband/Live creates filmed live sessions that help artists turn
+  strong performances into standout visual content. We bring together
+  musicians, creative direction, and live energy to build sessions that
+  feel intentional, collaborative, and worth sharing.
+</p>
 
             <div className="mt-8 flex flex-wrap gap-4">
               <a
@@ -245,11 +206,11 @@ export default function Home() {
               What we do
             </p>
             <p
-              className={`${cormorant.className} mt-4 text-3xl font-semibold leading-9 text-[#f5ead8]`}
-            >
-              We showcase our art and help artists bring their sound to life
-              through live, collaborative session experiences.
-            </p>
+  className={`${cormorant.className} mt-4 text-3xl font-semibold leading-9 text-[#f5ead8]`}
+>
+  We create live session experiences that give artists strong visuals,
+  real collaboration, and a performance they can proudly put into the world.
+</p>
           </div>
         </div>
       </section>
@@ -267,9 +228,9 @@ export default function Home() {
             </h2>
           </div>
           <p className="max-w-xl text-[#f5ead8]/70">
-            A curated look at the atmosphere, collaboration, and live energy
-            artists can expect when working with Houseband/Live.
-          </p>
+  A look at the kind of live performance, visual quality, and creative
+  collaboration artists can expect when they work with Houseband/Live.
+</p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
@@ -300,77 +261,14 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </section>
-            <section
-        id="episodes"
-        className="border-y border-[#d8a25e]/15 bg-[#18110f] px-6 py-20 lg:px-10"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-[#d8a25e]/80">
-                Previous Episodes
-              </p>
-              <h2
-                className={`${bungee.className} mt-3 text-3xl tracking-wide md:text-5xl`}
-              >
-                Watch the Archive
-              </h2>
-            </div>
-            <p className="max-w-xl text-[#f5ead8]/70">
-              Explore highlights from past Houseband/Live episodes and get a feel
-              for the sound, style, and collaborative energy behind each session.
-            </p>
-          </div>
 
-          <div className="space-y-12">
-            {episodes.map((episode) => (
-              <div
-                key={episode.episodeTitle}
-                className="retro-card-frame rounded-[2rem] border border-[#d8a25e]/20 bg-[#120d0b] p-8 shadow-xl"
-              >
-                <div className="mb-8">
-                  <p className="text-xs uppercase tracking-[0.3em] text-[#d8a25e]">
-                    {episode.subtitle}
-                  </p>
-                  <h3
-                    className={`${cormorant.className} mt-2 text-4xl font-semibold text-[#f5ead8]`}
-                  >
-                    {episode.episodeTitle}
-                  </h3>
-                </div>
-
-                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                  {episode.videos.map((video) => (
-                    <div
-                      key={video.youtubeId}
-                      className="overflow-hidden rounded-3xl border border-[#d8a25e]/15 bg-[#1a1310]"
-                    >
-                      <div className="aspect-video w-full">
-                        <iframe
-                          className="h-full w-full"
-                          src={`https://www.youtube.com/embed/${video.youtubeId}`}
-                          title={video.title}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        />
-                      </div>
-                      <div className="p-4">
-                        <p className="text-sm uppercase tracking-[0.25em] text-[#d8a25e]/80">
-                          Video
-                        </p>
-                        <h4
-                          className={`${cormorant.className} mt-2 text-2xl font-semibold text-[#f5ead8]`}
-                        >
-                          {video.title}
-                        </h4>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="mt-10 text-center">
+          <a
+            href="#work"
+            className="inline-block rounded-full bg-[#d8a25e] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#120d0b] transition hover:scale-105"
+          >
+            Work With Us
+          </a>
         </div>
       </section>
 
@@ -381,13 +279,18 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-[#d8a25e]/80">
-              Artists
+              Who This Is For
             </p>
             <h2
               className={`${bungee.className} mt-3 text-3xl tracking-wide md:text-5xl`}
             >
               Built for Collaboration
             </h2>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-[#f5ead8]/75">
+  Whether you are a solo artist, vocalist, songwriter, instrumentalist,
+  or creative collaborator, Houseband/Live is built for artists who want
+  their music presented in a more intentional and visually compelling way.
+</p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2">
@@ -426,11 +329,11 @@ export default function Home() {
               A Platform for Live Artistry
             </h2>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-[#f5ead8]/75">
-              Houseband/Live exists to spotlight artists through dynamic live
-              sessions that feel elevated, intentional, and visually
-              compelling. We blend performance, collaboration, and creative
-              direction to make each session feel like an event.
-            </p>
+  Houseband/Live exists to help artists turn live performance into a
+  stronger creative asset. Our sessions combine musicianship, visual
+  storytelling, and collaboration so each performance feels polished,
+  memorable, and ready to reach a wider audience.
+</p>
           </div>
 
           <div className="retro-card-frame rounded-3xl border border-[#d8a25e]/20 bg-[#1a1310] p-8 shadow-xl">
@@ -438,12 +341,10 @@ export default function Home() {
               Why it works
             </p>
             <ul className="mt-6 space-y-4 text-[#f5ead8]/80">
-              <li>Live-first identity with strong visual storytelling</li>
-              <li>
-                Professional presentation without losing artistic character
-              </li>
-              <li>Clear entry points for artists who want support</li>
-            </ul>
+  <li>High-quality live content built around real performance</li>
+  <li>Creative direction that keeps the artist at the center</li>
+  <li>Flexible ways for artists to collaborate and get support</li>
+</ul>
           </div>
         </div>
       </section>
@@ -459,10 +360,11 @@ export default function Home() {
             Artist Support Packages
           </h2>
           <p className="mt-5 text-lg leading-8 text-[#f5ead8]/75">
-            Designed for artists who want more than exposure. Whether you need
-            a clean live session or a more involved creative partnership, we
-            offer flexible support built around your goals.
-          </p>
+  Our packages are built for artists who want more than just a recording.
+  Whether you need a straightforward live session or a more hands-on
+  creative partnership, we offer support that matches your goals, sound,
+  and stage of growth.
+</p>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
@@ -530,9 +432,10 @@ export default function Home() {
               Let’s Build Something Live
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-8 text-[#f5ead8]/75">
-              Reach out if you are an artist, collaborator, or creative partner
-              interested in performing with Houseband/Live.
-            </p>
+  Reach out if you are an artist looking to create a session, a musician
+  interested in collaborating, or a creative partner who wants to build
+  something with Houseband/Live.
+</p>
           </div>
 
           <div className="retro-card-frame rounded-[2rem] border border-[#d8a25e]/20 bg-[#120d0b] p-8 shadow-2xl">
@@ -541,8 +444,8 @@ export default function Home() {
             </div>
 
             <p className="mb-5 text-sm text-[#f5ead8]/60">
-              Tell us who you are and what kind of session you're looking for.
-            </p>
+  Tell us a little about yourself, your sound, and the kind of session you want to create.
+</p>
 
             <form onSubmit={handleSubmit} className="grid gap-5">
               <input
