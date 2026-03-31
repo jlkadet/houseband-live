@@ -24,3 +24,56 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.retro-grain {
+  position: relative;
+}
+
+.retro-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: radial-gradient(
+    rgba(255, 245, 230, 0.22) 0.7px,
+    transparent 0.7px
+  );
+  background-size: 10px 10px;
+  mix-blend-mode: screen;
+}
+
+.retro-frame {
+  position: relative;
+}
+
+.retro-frame::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(216, 162, 94, 0.22);
+  border-radius: 1.5rem;
+  pointer-events: none;
+}
+
+.retro-card-frame {
+  position: relative;
+}
+
+.retro-card-frame::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(216, 162, 94, 0.16);
+  border-radius: 1.15rem;
+  pointer-events: none;
+}
+
+.retro-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(216, 162, 94, 0.5),
+    transparent
+  );
+}

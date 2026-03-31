@@ -1,11 +1,7 @@
 "use client";
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import {
-  Bungee,
-  Cormorant_Garamond,
-  Inter,
-} from "next/font/google";
+import { Bungee, Cormorant_Garamond, Inter } from "next/font/google";
 
 const bungee = Bungee({
   weight: "400",
@@ -118,11 +114,49 @@ export default function Home() {
       setStatus("error");
     }
   };
+    const episodes = [
+    {
+      episodeTitle: "Episode 01",
+      subtitle: "Houseband/Live Sessions",
+      videos: [
+        {
+          title: "Performance 01",
+          youtubeId: "pOStmVxCAkU",
+        },
+      ],
+    },
+    {
+      episodeTitle: "Episode 02",
+      subtitle: "Houseband/Live Sessions",
+      videos: [
+        {
+          title: "Performance 02",
+          youtubeId: "Pp3C_fHKtMw",
+        },
+      ],
+    },
+    {
+      episodeTitle: "Episode 03",
+      subtitle: "Houseband/Live Sessions",
+      videos: [
+        {
+          title: "Performance 03",
+          youtubeId: "zxgs9gi_88o",
+        },
+        {
+          title: "Performance 04",
+          youtubeId: "qqYYwg5OkC0",
+        },
+        {
+          title: "Performance 05",
+          youtubeId: "2zn_BgkmK3Y",
+        },
+      ],
+    },
+  ];
 
   return (
-    <div
-      className={`${inter.className} min-h-screen bg-[#120d0b] text-[#f5ead8]`}
-    >
+    <div className={`${inter.className} min-h-screen bg-[#120d0b] text-[#f5ead8]`}>
       <header className="fixed top-0 z-50 w-full border-b border-[#c48b4f]/20 bg-[#120d0b]/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
           <img
@@ -132,19 +166,22 @@ export default function Home() {
           />
 
           <nav className="hidden gap-8 text-sm uppercase tracking-[0.25em] text-[#f5ead8]/75 md:flex">
-            <a href="#sessions" className="transition hover:text-[#d8a25e]">
-              Sessions
-            </a>
-            <a href="#artists" className="transition hover:text-[#d8a25e]">
-              Artists
-            </a>
-            <a href="#about" className="transition hover:text-[#d8a25e]">
-              About
-            </a>
-            <a href="#work" className="transition hover:text-[#d8a25e]">
-              Work With Us
-            </a>
-          </nav>
+  <a href="#sessions" className="transition hover:text-[#d8a25e]">
+    Sessions
+  </a>
+  <a href="#episodes" className="transition hover:text-[#d8a25e]">
+    Episodes
+  </a>
+  <a href="#artists" className="transition hover:text-[#d8a25e]">
+    Artists
+  </a>
+  <a href="#about" className="transition hover:text-[#d8a25e]">
+    About
+  </a>
+  <a href="#work" className="transition hover:text-[#d8a25e]">
+    Work With Us
+  </a>
+</nav>
 
           <a
             href="#contact"
@@ -162,7 +199,6 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-[#120d0b]/55" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#120d0b] via-[#120d0b]/40 to-transparent" />
-        <div className="absolute inset-0 opacity-[0.08] mix-blend-screen [background-image:radial-gradient(#f5ead8_0.7px,transparent_0.7px)] [background-size:12px_12px]" />
 
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
@@ -176,9 +212,10 @@ export default function Home() {
               HOUSEBAND/
               <span className="block text-[#f2d3a2]">LIVE</span>
             </h1>
+
             <div className="mb-4 inline-block rounded-full border border-[#d8a25e]/30 bg-[#1a1310]/70 px-4 py-2 text-[10px] uppercase tracking-[0.3em] text-[#f2d3a2]">
-  Est. Live Sessions / Minneapolis
-</div>
+              Est. Live Sessions / Minneapolis
+            </div>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-[#f5ead8]/85 md:text-lg">
               Professional live sessions with retro soul and artistic edge. We
@@ -202,7 +239,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="max-w-sm rounded-3xl border border-[#d8a25e]/30 bg-[#1a1310]/70 p-6 shadow-2xl backdrop-blur-md">
+          <div className="retro-card-frame max-w-sm rounded-3xl border border-[#d8a25e]/30 bg-[#1a1310]/70 p-6 shadow-2xl backdrop-blur-md">
             <p className="text-xs uppercase tracking-[0.3em] text-[#d8a25e]">
               What we do
             </p>
@@ -235,7 +272,7 @@ export default function Home() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-3">
-          {featuredSessions.map((session) => (
+          {featuredSessions.map((session, index) => (
             <div
               key={session.title}
               className="retro-card-frame group overflow-hidden rounded-3xl border border-[#d8a25e]/20 bg-[#1a1310] shadow-xl"
@@ -250,7 +287,7 @@ export default function Home() {
 
               <div className="p-6">
                 <p className="text-xs uppercase tracking-[0.25em] text-[#d8a25e]">
-                  Session No. 01
+                  Session No. {String(index + 1).padStart(2, "0")}
                 </p>
                 <h3
                   className={`${cormorant.className} mt-3 text-3xl font-semibold`}
@@ -261,6 +298,78 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+            <section
+        id="episodes"
+        className="border-y border-[#d8a25e]/15 bg-[#18110f] px-6 py-20 lg:px-10"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-sm uppercase tracking-[0.3em] text-[#d8a25e]/80">
+                Previous Episodes
+              </p>
+              <h2
+                className={`${bungee.className} mt-3 text-3xl tracking-wide md:text-5xl`}
+              >
+                Watch the Archive
+              </h2>
+            </div>
+            <p className="max-w-xl text-[#f5ead8]/70">
+              Explore highlights from past Houseband/Live episodes and get a feel
+              for the sound, style, and collaborative energy behind each session.
+            </p>
+          </div>
+
+          <div className="space-y-12">
+            {episodes.map((episode) => (
+              <div
+                key={episode.episodeTitle}
+                className="retro-card-frame rounded-[2rem] border border-[#d8a25e]/20 bg-[#120d0b] p-8 shadow-xl"
+              >
+                <div className="mb-8">
+                  <p className="text-xs uppercase tracking-[0.3em] text-[#d8a25e]">
+                    {episode.subtitle}
+                  </p>
+                  <h3
+                    className={`${cormorant.className} mt-2 text-4xl font-semibold text-[#f5ead8]`}
+                  >
+                    {episode.episodeTitle}
+                  </h3>
+                </div>
+
+                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                  {episode.videos.map((video) => (
+                    <div
+                      key={video.youtubeId}
+                      className="overflow-hidden rounded-3xl border border-[#d8a25e]/15 bg-[#1a1310]"
+                    >
+                      <div className="aspect-video w-full">
+                        <iframe
+                          className="h-full w-full"
+                          src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                          title={video.title}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                      <div className="p-4">
+                        <p className="text-sm uppercase tracking-[0.25em] text-[#d8a25e]/80">
+                          Video
+                        </p>
+                        <h4
+                          className={`${cormorant.className} mt-2 text-2xl font-semibold text-[#f5ead8]`}
+                        >
+                          {video.title}
+                        </h4>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -289,7 +398,7 @@ export default function Home() {
             ].map((item) => (
               <div
                 key={item}
-                className="rounded-3xl border border-[#d8a25e]/15 bg-[#120d0b] p-6"
+                className="retro-card-frame rounded-3xl border border-[#d8a25e]/15 bg-[#120d0b] p-6"
               >
                 <h3 className={`${cormorant.className} text-2xl font-semibold`}>
                   {item}
@@ -323,7 +432,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="rounded-3xl border border-[#d8a25e]/20 bg-[#1a1310] p-8 shadow-xl">
+          <div className="retro-card-frame rounded-3xl border border-[#d8a25e]/20 bg-[#1a1310] p-8 shadow-xl">
             <p className="text-sm uppercase tracking-[0.3em] text-[#d8a25e]/80">
               Why it works
             </p>
@@ -375,7 +484,9 @@ export default function Home() {
                   <p className="text-xs uppercase tracking-[0.25em] text-[#d8a25e]/70">
                     Starting at
                   </p>
-                  <p className={`${bungee.className} mt-2 text-3xl text-[#f2d3a2]`}>
+                  <p
+                    className={`${bungee.className} mt-2 text-3xl text-[#f2d3a2]`}
+                  >
                     {pkg.price}
                   </p>
                 </div>
@@ -423,10 +534,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="rounded-[2rem] border border-[#d8a25e]/20 bg-[#120d0b] p-8 shadow-2xl">
-          <div className="mb-3 text-[10px] uppercase tracking-[0.35em] text-[#d8a25e]">
-  Artist Intake Form
-</div>
+          <div className="retro-card-frame rounded-[2rem] border border-[#d8a25e]/20 bg-[#120d0b] p-8 shadow-2xl">
+            <div className="mb-3 text-[10px] uppercase tracking-[0.35em] text-[#d8a25e]">
+              Artist Intake Form
+            </div>
+
             <p className="mb-5 text-sm text-[#f5ead8]/60">
               Tell us who you are and what kind of session you're looking for.
             </p>
