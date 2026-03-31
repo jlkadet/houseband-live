@@ -166,21 +166,21 @@ export default function Home() {
           />
 
           <nav className="hidden gap-8 text-sm uppercase tracking-[0.25em] text-[#f5ead8]/75 md:flex">
-  <a href="#sessions" className="transition hover:text-[#d8a25e]">
+  <Link href="#sessions" className="transition hover:text-[#d8a25e]">
     Sessions
-  </a>
-  <a href="#episodes" className="transition hover:text-[#d8a25e]">
+  </Link>
+  <Link href="#episodes" className="transition hover:text-[#d8a25e]">
     Episodes
-  </a>
-  <a href="#artists" className="transition hover:text-[#d8a25e]">
+  </Link>
+  <Link href="#artists" className="transition hover:text-[#d8a25e]">
     Artists
-  </a>
-  <a href="#about" className="transition hover:text-[#d8a25e]">
+  </Link>
+  <Link href="#about" className="transition hover:text-[#d8a25e]">
     About
-  </a>
-  <a href="#work" className="transition hover:text-[#d8a25e]">
+  </Link>
+  <Link href="#work" className="transition hover:text-[#d8a25e]">
     Work With Us
-  </a>
+  </Link>
 </nav>
 
           <a
