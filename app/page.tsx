@@ -32,19 +32,19 @@ export default function Home() {
 
   const featuredSessions = [
     {
-      title: "Midnight Session",
-      artist: "Featuring Local Artists",
+      title: "Ian Chri$t",
+      artist: "Featuring Ian Chri$t and the Houseband/Live Collective",
       image: "/IanChrist.png",
     },
     {
-      title: "Studio Take 02",
-      artist: "Houseband/Live Collective",
-      image: "/grouppic.png",
+      title: "Imani Waters",
+      artist: "Featuring Imani Waters and the Houseband/Live Collective",
+      image: "/imaniwaters.png",
     },
     {
-      title: "Live Room Cut",
-      artist: "Guest Collaboration",
-      image: "/IanChrist.png",
+      title: "Nat Harriet",
+      artist: "Featuring Nat Harriet and the Houseband/Live Collective",
+      image: "/natharriet.png",
     },
   ];
 
