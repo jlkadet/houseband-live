@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Bebas_Neue, Cormorant_Garamond, Inter } from "next/font/google";
 
 const bebas = Bebas_Neue({
@@ -15,6 +18,15 @@ const inter = Inter({
 });
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    artistName: "",
+    links: "",
+    email: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
   const featuredSessions = [
     {
       title: "Midnight Session",
@@ -57,6 +69,45 @@ export default function Home() {
       ],
     },
   ];
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("submitting");
+
+    try {
+      const response = await fetch("https://formspree.io/f/xpqorbzd", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({
+          artistName: "",
+          links: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      setStatus("error");
+    }
+  };
 
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
@@ -116,10 +167,9 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-white/85 md:text-lg">
-              Professional live sessions with artistic edge. We bring
-              musicians together to create immersive performances,
-              collaborative visuals, and a platform artists want to be part
-              of.
+              Professional live sessions with artistic edge. We bring musicians
+              together to create immersive performances, collaborative visuals,
+              and a platform artists want to be part of.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -359,22 +409,68 @@ export default function Home() {
             </p>
           </div>
 
-          <form
-  action="https://formspree.io/f/xpqorbzd"
-  method="POST"
-  className="..."
->
-            <input type="text" name="artistName" placeholder="Artist Name" />
-<input type="text" name="links" placeholder="Instagram / Spotify / Website" />
-<input type="email" name="email" placeholder="Email" />
-<textarea name="message" />
-            <button
-              type="submit"
-              className="rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
+          <div>
+            <form
+              onSubmit={handleSubmit}
+              className="grid gap-4 rounded-[2rem] border border-white/10 bg-black/60 p-8"
             >
-              Submit Inquiry
-            </button>
-          </form>
+              <input
+                type="text"
+                name="artistName"
+                placeholder="Artist Name"
+                value={formData.artistName}
+                onChange={handleChange}
+                required
+                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-white/35 outline-none"
+              />
+              <input
+                type="text"
+                name="links"
+                placeholder="Instagram / Spotify / Website"
+                value={formData.links}
+                onChange={handleChange}
+                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-white/35 outline-none"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-white/35 outline-none"
+              />
+              <textarea
+                name="message"
+                placeholder="Tell us about your music and what kind of support you're looking for"
+                rows={5}
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-white/35 outline-none"
+              />
+
+              <button
+                type="submit"
+                disabled={status === "submitting"}
+                className="rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {status === "submitting" ? "Submitting..." : "Submit Inquiry"}
+              </button>
+            </form>
+
+            {status === "success" && (
+              <p className="mt-4 rounded-2xl border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-300">
+                Thanks! Your inquiry was submitted successfully. We’ll be in touch soon.
+              </p>
+            )}
+
+            {status === "error" && (
+              <p className="mt-4 rounded-2xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+                Something went wrong while sending your form. Please try again.
+              </p>
+            )}
+          </div>
         </div>
       </section>
     </div>
