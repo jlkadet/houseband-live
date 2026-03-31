@@ -1,15 +1,19 @@
 "use client";
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import { Bebas_Neue, Cormorant_Garamond, Inter } from "next/font/google";
+import {
+  Bungee,
+  Cormorant_Garamond,
+  Inter,
+} from "next/font/google";
 
-const bebas = Bebas_Neue({
+const bungee = Bungee({
   weight: "400",
   subsets: ["latin"],
 });
 
 const cormorant = Cormorant_Garamond({
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -116,8 +120,10 @@ export default function Home() {
   };
 
   return (
-    <div className={`${inter.className} min-h-screen bg-black text-white`}>
-      <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-md">
+    <div
+      className={`${inter.className} min-h-screen bg-[#120d0b] text-[#f5ead8]`}
+    >
+      <header className="fixed top-0 z-50 w-full border-b border-[#c48b4f]/20 bg-[#120d0b]/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
           <img
             src="/housebandlogo.png"
@@ -125,79 +131,83 @@ export default function Home() {
             className="h-12 w-auto"
           />
 
-          <nav className="hidden gap-8 text-sm uppercase tracking-[0.25em] text-white/80 md:flex">
-            <a href="#sessions" className="transition hover:text-white">
+          <nav className="hidden gap-8 text-sm uppercase tracking-[0.25em] text-[#f5ead8]/75 md:flex">
+            <a href="#sessions" className="transition hover:text-[#d8a25e]">
               Sessions
             </a>
-            <a href="#artists" className="transition hover:text-white">
+            <a href="#artists" className="transition hover:text-[#d8a25e]">
               Artists
             </a>
-            <a href="#about" className="transition hover:text-white">
+            <a href="#about" className="transition hover:text-[#d8a25e]">
               About
             </a>
-            <a href="#work" className="transition hover:text-white">
+            <a href="#work" className="transition hover:text-[#d8a25e]">
               Work With Us
             </a>
           </nav>
 
           <a
             href="#contact"
-            className="rounded-full border border-white/20 bg-white px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
+            className="rounded-full border border-[#d8a25e]/40 bg-[#f5ead8] px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#120d0b] transition hover:scale-105"
           >
             Join / Contact
           </a>
         </div>
       </header>
 
-      <section className="relative flex min-h-screen items-end overflow-hidden px-6 pb-16 pt-28 lg:px-10 lg:pb-24">
+      <section className="retro-grain retro-frame relative flex min-h-screen items-end overflow-hidden px-6 pb-16 pt-28 lg:px-10 lg:pb-24">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/grouppic.png')" }}
         />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
+        <div className="absolute inset-0 bg-[#120d0b]/55" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#120d0b] via-[#120d0b]/40 to-transparent" />
+        <div className="absolute inset-0 opacity-[0.08] mix-blend-screen [background-image:radial-gradient(#f5ead8_0.7px,transparent_0.7px)] [background-size:12px_12px]" />
 
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
-            <p className="mb-4 text-sm uppercase tracking-[0.45em] text-white/75">
+            <p className="mb-4 text-sm uppercase tracking-[0.45em] text-[#d8a25e]">
               Live Music Collective
             </p>
 
             <h1
-              className={`${bebas.className} text-6xl leading-[0.9] tracking-tight md:text-8xl lg:text-[9rem]`}
+              className={`${bungee.className} text-5xl leading-[0.92] tracking-tight md:text-7xl lg:text-[7rem]`}
             >
               HOUSEBAND/
-              <span className="block text-white/85">LIVE</span>
+              <span className="block text-[#f2d3a2]">LIVE</span>
             </h1>
+            <div className="mb-4 inline-block rounded-full border border-[#d8a25e]/30 bg-[#1a1310]/70 px-4 py-2 text-[10px] uppercase tracking-[0.3em] text-[#f2d3a2]">
+  Est. Live Sessions / Minneapolis
+</div>
 
-            <p className="mt-6 max-w-2xl text-base leading-7 text-white/85 md:text-lg">
-              Professional live sessions with artistic edge. We bring musicians
-              together to create immersive performances, collaborative visuals,
-              and a platform artists want to be part of.
+            <p className="mt-6 max-w-2xl text-base leading-7 text-[#f5ead8]/85 md:text-lg">
+              Professional live sessions with retro soul and artistic edge. We
+              bring musicians together to create immersive performances,
+              collaborative visuals, and a platform artists want to be part of.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
               <a
                 href="#work"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
+                className="rounded-full bg-[#d8a25e] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#120d0b] transition hover:scale-105"
               >
                 Work With Us
               </a>
               <a
                 href="#sessions"
-                className="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-white/10"
+                className="rounded-full border border-[#f5ead8]/30 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#f5ead8] transition hover:bg-[#f5ead8]/10"
               >
                 View Sessions
               </a>
             </div>
           </div>
 
-          <div className="max-w-sm rounded-3xl border border-white/20 bg-black/40 p-6 shadow-2xl backdrop-blur-md">
-            <p className="text-xs uppercase tracking-[0.3em] text-white/60">
+          <div className="max-w-sm rounded-3xl border border-[#d8a25e]/30 bg-[#1a1310]/70 p-6 shadow-2xl backdrop-blur-md">
+            <p className="text-xs uppercase tracking-[0.3em] text-[#d8a25e]">
               What we do
             </p>
             <p
-              className={`${cormorant.className} mt-4 text-3xl font-medium leading-9 text-white`}
+              className={`${cormorant.className} mt-4 text-3xl font-semibold leading-9 text-[#f5ead8]`}
             >
               We showcase our art and help artists bring their sound to life
               through live, collaborative session experiences.
@@ -209,16 +219,16 @@ export default function Home() {
       <section id="sessions" className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-white/50">
+            <p className="text-sm uppercase tracking-[0.3em] text-[#d8a25e]/80">
               Featured Sessions
             </p>
             <h2
-              className={`${bebas.className} mt-3 text-4xl tracking-wide md:text-6xl`}
+              className={`${bungee.className} mt-3 text-3xl tracking-wide md:text-5xl`}
             >
               Featured Sessions
             </h2>
           </div>
-          <p className="max-w-xl text-white/70">
+          <p className="max-w-xl text-[#f5ead8]/70">
             A curated look at the atmosphere, collaboration, and live energy
             artists can expect when working with Houseband/Live.
           </p>
@@ -228,7 +238,7 @@ export default function Home() {
           {featuredSessions.map((session) => (
             <div
               key={session.title}
-              className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-xl"
+              className="retro-card-frame group overflow-hidden rounded-3xl border border-[#d8a25e]/20 bg-[#1a1310] shadow-xl"
             >
               <div className="overflow-hidden">
                 <img
@@ -239,15 +249,15 @@ export default function Home() {
               </div>
 
               <div className="p-6">
-                <p className="text-xs uppercase tracking-[0.25em] text-white/50">
-                  Session
+                <p className="text-xs uppercase tracking-[0.25em] text-[#d8a25e]">
+                  Session No. 01
                 </p>
                 <h3
                   className={`${cormorant.className} mt-3 text-3xl font-semibold`}
                 >
                   {session.title}
                 </h3>
-                <p className="mt-2 text-white/70">{session.artist}</p>
+                <p className="mt-2 text-[#f5ead8]/70">{session.artist}</p>
               </div>
             </div>
           ))}
@@ -256,15 +266,15 @@ export default function Home() {
 
       <section
         id="artists"
-        className="border-y border-white/10 bg-white/[0.03] px-6 py-20 lg:px-10"
+        className="border-y border-[#d8a25e]/15 bg-[#18110f] px-6 py-20 lg:px-10"
       >
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-white/50">
+            <p className="text-sm uppercase tracking-[0.3em] text-[#d8a25e]/80">
               Artists
             </p>
             <h2
-              className={`${bebas.className} mt-3 text-4xl tracking-wide md:text-6xl`}
+              className={`${bungee.className} mt-3 text-3xl tracking-wide md:text-5xl`}
             >
               Built for Collaboration
             </h2>
@@ -279,12 +289,12 @@ export default function Home() {
             ].map((item) => (
               <div
                 key={item}
-                className="rounded-3xl border border-white/10 bg-black/30 p-6"
+                className="rounded-3xl border border-[#d8a25e]/15 bg-[#120d0b] p-6"
               >
                 <h3 className={`${cormorant.className} text-2xl font-semibold`}>
                   {item}
                 </h3>
-                <p className="mt-3 text-white/70">
+                <p className="mt-3 text-[#f5ead8]/70">
                   A flexible collective model that creates space for strong
                   performances and new creative partnerships.
                 </p>
@@ -297,15 +307,15 @@ export default function Home() {
       <section id="about" className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-white/50">
+            <p className="text-sm uppercase tracking-[0.3em] text-[#d8a25e]/80">
               About
             </p>
             <h2
-              className={`${bebas.className} mt-3 text-4xl tracking-wide md:text-6xl`}
+              className={`${bungee.className} mt-3 text-3xl tracking-wide md:text-5xl`}
             >
               A Platform for Live Artistry
             </h2>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-white/75">
+            <p className="mt-6 max-w-3xl text-lg leading-8 text-[#f5ead8]/75">
               Houseband/Live exists to spotlight artists through dynamic live
               sessions that feel elevated, intentional, and visually
               compelling. We blend performance, collaboration, and creative
@@ -313,11 +323,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="rounded-3xl border border-white/15 bg-white/[0.04] p-8 shadow-xl backdrop-blur-sm">
-            <p className="text-sm uppercase tracking-[0.3em] text-white/50">
+          <div className="rounded-3xl border border-[#d8a25e]/20 bg-[#1a1310] p-8 shadow-xl">
+            <p className="text-sm uppercase tracking-[0.3em] text-[#d8a25e]/80">
               Why it works
             </p>
-            <ul className="mt-6 space-y-4 text-white/80">
+            <ul className="mt-6 space-y-4 text-[#f5ead8]/80">
               <li>Live-first identity with strong visual storytelling</li>
               <li>
                 Professional presentation without losing artistic character
@@ -330,15 +340,15 @@ export default function Home() {
 
       <section id="work" className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
         <div className="mb-10 max-w-3xl">
-          <p className="text-sm uppercase tracking-[0.3em] text-white/50">
+          <p className="text-sm uppercase tracking-[0.3em] text-[#d8a25e]/80">
             Work With Us
           </p>
           <h2
-            className={`${bebas.className} mt-3 text-4xl tracking-wide md:text-6xl`}
+            className={`${bungee.className} mt-3 text-3xl tracking-wide md:text-5xl`}
           >
             Artist Support Packages
           </h2>
-          <p className="mt-5 text-lg leading-8 text-white/75">
+          <p className="mt-5 text-lg leading-8 text-[#f5ead8]/75">
             Designed for artists who want more than exposure. Whether you need
             a clean live session or a more involved creative partnership, we
             offer flexible support built around your goals.
@@ -349,33 +359,33 @@ export default function Home() {
           {packages.map((pkg) => (
             <div
               key={pkg.name}
-              className="rounded-[2rem] border border-white/15 bg-white/[0.04] p-8 shadow-xl backdrop-blur-sm"
+              className="retro-card-frame rounded-[2rem] border border-[#d8a25e]/20 bg-[#1a1310] p-8 shadow-xl"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className={`${cormorant.className} text-3xl font-semibold`}>
                     {pkg.name}
                   </h3>
-                  <p className="mt-3 max-w-xl text-white/70">
+                  <p className="mt-3 max-w-xl text-[#f5ead8]/70">
                     {pkg.description}
                   </p>
                 </div>
 
                 <div className="text-right">
-                  <p className="text-xs uppercase tracking-[0.25em] text-white/50">
+                  <p className="text-xs uppercase tracking-[0.25em] text-[#d8a25e]/70">
                     Starting at
                   </p>
-                  <p className={`${bebas.className} mt-2 text-4xl tracking-wide`}>
+                  <p className={`${bungee.className} mt-2 text-3xl text-[#f2d3a2]`}>
                     {pkg.price}
                   </p>
                 </div>
               </div>
 
-              <ul className="mt-8 space-y-3 text-white/80">
+              <ul className="mt-8 space-y-3 text-[#f5ead8]/80">
                 {pkg.features.map((feature) => (
                   <li
                     key={feature}
-                    className="rounded-full border border-white/10 px-4 py-3"
+                    className="rounded-full border border-[#d8a25e]/15 px-4 py-3"
                   >
                     {feature}
                   </li>
@@ -384,7 +394,7 @@ export default function Home() {
 
               <a
                 href="#contact"
-                className="mt-8 inline-block rounded-full bg-white px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
+                className="mt-8 inline-block rounded-full bg-[#d8a25e] px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#120d0b] transition hover:scale-105"
               >
                 Inquire Now
               </a>
@@ -395,26 +405,29 @@ export default function Home() {
 
       <section
         id="contact"
-        className="border-t border-white/10 bg-white/[0.03] px-6 py-20 lg:px-10"
+        className="border-t border-[#d8a25e]/15 bg-[#18110f] px-6 py-20 lg:px-10"
       >
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-white/50">
+            <p className="text-sm uppercase tracking-[0.3em] text-[#d8a25e]/80">
               Join / Contact
             </p>
             <h2
-              className={`${bebas.className} mt-3 text-4xl tracking-wide md:text-6xl`}
+              className={`${bungee.className} mt-3 text-3xl tracking-wide md:text-5xl`}
             >
               Let’s Build Something Live
             </h2>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-white/75">
+            <p className="mt-6 max-w-xl text-lg leading-8 text-[#f5ead8]/75">
               Reach out if you are an artist, collaborator, or creative partner
               interested in performing with Houseband/Live.
             </p>
           </div>
 
-          <div className="rounded-[2rem] border border-white/10 bg-black/50 p-8 shadow-2xl backdrop-blur-md">
-            <p className="mb-5 text-sm text-white/60">
+          <div className="rounded-[2rem] border border-[#d8a25e]/20 bg-[#120d0b] p-8 shadow-2xl">
+          <div className="mb-3 text-[10px] uppercase tracking-[0.35em] text-[#d8a25e]">
+  Artist Intake Form
+</div>
+            <p className="mb-5 text-sm text-[#f5ead8]/60">
               Tell us who you are and what kind of session you're looking for.
             </p>
 
@@ -426,7 +439,7 @@ export default function Home() {
                 value={formData.artistName}
                 onChange={handleChange}
                 required
-                className="w-full rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-base text-white placeholder:text-white/50 outline-none transition focus:border-white/50 focus:bg-white/15"
+                className="w-full rounded-2xl border border-[#d8a25e]/20 bg-[#241916] px-5 py-4 text-base text-[#f5ead8] placeholder:text-[#f5ead8]/40 outline-none transition focus:border-[#d8a25e]/50"
               />
 
               <input
@@ -435,7 +448,7 @@ export default function Home() {
                 placeholder="Instagram / Spotify / Website"
                 value={formData.links}
                 onChange={handleChange}
-                className="w-full rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-base text-white placeholder:text-white/50 outline-none transition focus:border-white/50 focus:bg-white/15"
+                className="w-full rounded-2xl border border-[#d8a25e]/20 bg-[#241916] px-5 py-4 text-base text-[#f5ead8] placeholder:text-[#f5ead8]/40 outline-none transition focus:border-[#d8a25e]/50"
               />
 
               <input
@@ -445,7 +458,7 @@ export default function Home() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-base text-white placeholder:text-white/50 outline-none transition focus:border-white/50 focus:bg-white/15"
+                className="w-full rounded-2xl border border-[#d8a25e]/20 bg-[#241916] px-5 py-4 text-base text-[#f5ead8] placeholder:text-[#f5ead8]/40 outline-none transition focus:border-[#d8a25e]/50"
               />
 
               <textarea
@@ -455,13 +468,13 @@ export default function Home() {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-base text-white placeholder:text-white/50 outline-none transition focus:border-white/50 focus:bg-white/15"
+                className="w-full rounded-2xl border border-[#d8a25e]/20 bg-[#241916] px-5 py-4 text-base text-[#f5ead8] placeholder:text-[#f5ead8]/40 outline-none transition focus:border-[#d8a25e]/50"
               />
 
               <button
                 type="submit"
                 disabled={status === "submitting"}
-                className="mt-2 inline-flex w-fit items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-60"
+                className="mt-2 inline-flex w-fit items-center justify-center rounded-full bg-[#d8a25e] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#120d0b] transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {status === "submitting" ? "Submitting..." : "Request a Session"}
               </button>
