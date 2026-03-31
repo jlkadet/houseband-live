@@ -359,27 +359,15 @@ export default function Home() {
             </p>
           </div>
 
-          <form className="grid gap-4 rounded-[2rem] border border-white/10 bg-black/60 p-8">
-            <input
-              type="text"
-              placeholder="Artist Name"
-              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-white/35 outline-none"
-            />
-            <input
-              type="text"
-              placeholder="Instagram / Spotify / Website"
-              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-white/35 outline-none"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-white/35 outline-none"
-            />
-            <textarea
-              placeholder="Tell us about your music and what kind of support you're looking for"
-              rows={5}
-              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-white/35 outline-none"
-            />
+          <form
+  action="https://formspree.io/f/xpqorbzd"
+  method="POST"
+  className="..."
+>
+            <input type="text" name="artistName" placeholder="Artist Name" />
+<input type="text" name="links" placeholder="Instagram / Spotify / Website" />
+<input type="email" name="email" placeholder="Email" />
+<textarea name="message" />
             <button
               type="submit"
               className="rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
