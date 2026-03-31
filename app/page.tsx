@@ -390,89 +390,86 @@ export default function Home() {
       </section>
 
       <section
-        id="contact"
-        className="border-t border-white/10 bg-white/[0.03] px-6 py-20 lg:px-10"
+  id="contact"
+  className="border-t border-white/10 bg-white/[0.03] px-6 py-20 lg:px-10"
+>
+  <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
+    <div>
+      <p className="text-sm uppercase tracking-[0.3em] text-white/50">
+        Join / Contact
+      </p>
+      <h2
+        className={`${bebas.className} mt-3 text-4xl tracking-wide md:text-6xl`}
       >
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_1fr]">
-          <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-white/50">
-              Join / Contact
-            </p>
-            <h2
-              className={`${bebas.className} mt-3 text-4xl tracking-wide md:text-6xl`}
-            >
-              Let’s Build Something Live
-            </h2>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-white/75">
-              Reach out if you are an artist, collaborator, or creative partner
-              interested in performing with Houseband/Live.
-            </p>
-          </div>
-
-          <div>
-            <form
-              onSubmit={handleSubmit}
-              className="grid gap-4 rounded-[2rem] border border-white/10 bg-black/60 p-8"
-            >
-              <input
-                type="text"
-                name="artistName"
-                placeholder="Artist Name"
-                value={formData.artistName}
-                onChange={handleChange}
-                required
-                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-white/35 outline-none"
-              />
-              <input
-                type="text"
-                name="links"
-                placeholder="Instagram / Spotify / Website"
-                value={formData.links}
-                onChange={handleChange}
-                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-white/35 outline-none"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-white/35 outline-none"
-              />
-              <textarea
-                name="message"
-                placeholder="Tell us about your music and what kind of support you're looking for"
-                rows={5}
-                value={formData.message}
-                onChange={handleChange}
-                required
-                className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-white placeholder:text-white/35 outline-none"
-              />
-
-              <button
-                type="submit"
-                disabled={status === "submitting"}
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {status === "submitting" ? "Submitting..." : "Submit Inquiry"}
-              </button>
-            </form>
-
-            {status === "success" && (
-              <p className="mt-4 rounded-2xl border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-300">
-                Thanks! Your inquiry was submitted successfully. We’ll be in touch soon.
-              </p>
-            )}
-
-            {status === "error" && (
-              <p className="mt-4 rounded-2xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
-                Something went wrong while sending your form. Please try again.
-              </p>
-            )}
-          </div>
-        </div>
-      </section>
+        Let’s Build Something Live
+      </h2>
+      <p className="mt-6 max-w-xl text-lg leading-8 text-white/75">
+        Reach out if you are an artist, collaborator, or creative partner
+        interested in performing with Houseband/Live.
+      </p>
     </div>
-  );
-}
+
+    <div className="rounded-[2rem] border border-white/10 bg-black/50 p-8 shadow-2xl backdrop-blur-md">
+      <form onSubmit={handleSubmit} className="grid gap-5">
+        <input
+          type="text"
+          name="artistName"
+          placeholder="Artist Name"
+          value={formData.artistName}
+          onChange={handleChange}
+          required
+          className="w-full rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-base text-white placeholder:text-white/50 outline-none transition focus:border-white/50 focus:bg-white/15"
+        />
+
+        <input
+          type="text"
+          name="links"
+          placeholder="Instagram / Spotify / Website"
+          value={formData.links}
+          onChange={handleChange}
+          className="w-full rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-base text-white placeholder:text-white/50 outline-none transition focus:border-white/50 focus:bg-white/15"
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          className="w-full rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-base text-white placeholder:text-white/50 outline-none transition focus:border-white/50 focus:bg-white/15"
+        />
+
+        <textarea
+          name="message"
+          placeholder="Tell us about your music and what kind of support you're looking for"
+          rows={6}
+          value={formData.message}
+          onChange={handleChange}
+          required
+          className="w-full rounded-2xl border border-white/20 bg-white/10 px-5 py-4 text-base text-white placeholder:text-white/50 outline-none transition focus:border-white/50 focus:bg-white/15"
+        />
+
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className="mt-2 inline-flex w-fit items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {status === "submitting" ? "Submitting..." : "Submit Inquiry"}
+        </button>
+      </form>
+
+      {status === "success" && (
+        <p className="mt-4 rounded-2xl border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-300">
+          Thanks! Your inquiry was submitted successfully. We’ll be in touch soon.
+        </p>
+      )}
+
+      {status === "error" && (
+        <p className="mt-4 rounded-2xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+          Something went wrong while sending your form. Please try again.
+        </p>
+      )}
+    </div>
+  </div>
+</section>
