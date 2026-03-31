@@ -410,7 +410,11 @@ export default function Home() {
     </div>
 
     <div className="rounded-[2rem] border border-white/10 bg-black/50 p-8 shadow-2xl backdrop-blur-md">
-      <form onSubmit={handleSubmit} className="grid gap-5">
+  <p className="mb-5 text-sm text-white/60">
+    Tell us who you are and what kind of session you're looking for.
+  </p>
+
+  <form onSubmit={handleSubmit} className="grid gap-5">
         <input
           type="text"
           name="artistName"
@@ -455,7 +459,7 @@ export default function Home() {
           disabled={status === "submitting"}
           className="mt-2 inline-flex w-fit items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {status === "submitting" ? "Submitting..." : "Submit Inquiry"}
+          {status === "submitting" ? "Submitting..." : "Request a Session"}
         </button>
       </form>
 
