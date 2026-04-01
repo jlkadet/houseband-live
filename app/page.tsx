@@ -119,40 +119,39 @@ export default function Home() {
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
       <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-          <img
-            src="/housebandlogo.png"
-            alt="Houseband Live"
-            className="h-12 w-auto"
-          />
+  <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+    <img
+      src="/housebandlogo.png"
+      alt="Houseband Live"
+      className="h-12 w-auto"
+    />
 
-          <nav className="hidden gap-8 text-sm uppercase tracking-[0.25em] text-white/70 md:flex">
-  <Link href="/" className="transition hover:text-white">
-    Home
-  </Link>
-  <Link href="/episodes" className="transition hover:text-white">
-    Episodes
-  </Link>
-  <Link href="/roster" className="transition hover:text-white">
-    Roster
-  </Link>
-  <Link href="/about" className="transition hover:text-white">
-    About
-  </Link>
-  <Link href="/work-with-us" className="transition hover:text-white">
-    Work With Us
-  </Link>
-</nav>
+    <nav className="flex gap-6 text-sm uppercase tracking-[0.2em] text-white/70">
+      <Link href="/" className="transition hover:text-white">
+        Home
+      </Link>
+      <Link href="/episodes" className="transition hover:text-white">
+        Episodes
+      </Link>
+      <Link href="/roster" className="transition hover:text-white">
+        Roster
+      </Link>
+      <Link href="/about" className="transition hover:text-white">
+        About
+      </Link>
+      <Link href="/work-with-us" className="transition hover:text-white">
+        Work With Us
+      </Link>
+    </nav>
 
-          <Link
-  href="/work-with-us"
-  className="rounded-full border border-white/20 bg-white px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
->
-  Apply to Perform
-</Link>
-        </div>
-      </header>
-
+    <Link
+      href="/work-with-us"
+      className="rounded-full border border-white/20 bg-white px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
+    >
+      Apply
+    </Link>
+  </div>
+</header>
       <section className="retro-grain retro-frame relative flex min-h-screen items-end overflow-hidden px-6 pb-16 pt-28 lg:px-10 lg:pb-24">
         <div
           className="absolute inset-0 bg-cover bg-center"
