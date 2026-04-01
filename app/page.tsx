@@ -126,23 +126,13 @@ export default function Home() {
       className="h-12 w-auto"
     />
 
-    <nav className="flex gap-6 text-sm uppercase tracking-[0.2em] text-white/70">
-      <Link href="/" className="transition hover:text-white">
-        Home
-      </Link>
-      <Link href="/episodes" className="transition hover:text-white">
-        Episodes
-      </Link>
-      <Link href="/roster" className="transition hover:text-white">
-        Roster
-      </Link>
-      <Link href="/about" className="transition hover:text-white">
-        About
-      </Link>
-      <Link href="/work-with-us" className="transition hover:text-white">
-        Work With Us
-      </Link>
-    </nav>
+    <nav className="hidden gap-8 text-sm uppercase tracking-[0.25em] text-white/70 md:flex">
+  <Link href="/" className="transition hover:text-white">Home</Link>
+  <Link href="/episodes" className="transition hover:text-white">Episodes</Link>
+  <Link href="/roster" className="transition hover:text-white">Roster</Link>
+  <Link href="/about" className="transition hover:text-white">About</Link>
+  <Link href="/work-with-us" className="transition hover:text-white">Work With Us</Link>
+</nav>
 
     <Link
       href="/work-with-us"
