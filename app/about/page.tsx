@@ -29,21 +29,11 @@ export default function AboutPage() {
     </Link>
 
     <nav className="hidden gap-8 text-sm uppercase tracking-[0.25em] text-white/70 md:flex">
-      <Link href="/" className="transition hover:text-white">
-        Home
-      </Link>
-      <Link href="/episodes" className="transition hover:text-white">
-        Episodes
-      </Link>
-      <Link href="/roster" className="transition hover:text-white">
-        Roster
-      </Link>
-      <Link href="/about" className="transition hover:text-white">
-        About
-      </Link>
-      <Link href="/work-with-us" className="transition hover:text-white">
-        Work With Us
-      </Link>
+      <Link href="/" className="transition hover:text-white">Home</Link>
+      <Link href="/episodes" className="transition hover:text-white">Episodes</Link>
+      <Link href="/roster" className="transition hover:text-white">Roster</Link>
+      <Link href="/about" className="transition hover:text-white">About</Link>
+      <Link href="/work-with-us" className="transition hover:text-white">Work With Us</Link>
     </nav>
 
     <Link

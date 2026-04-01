@@ -115,26 +115,32 @@ export default function EpisodesPage() {
 
   return (
     <div className={`${inter.className} min-h-screen bg-[#120d0b] text-[#f5ead8]`}>
-      <header className="border-b border-[#c48b4f]/20 bg-[#120d0b]/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-          <Link href="/">
-            <img
-              src="/housebandlogo.png"
-              alt="Houseband Live"
-              className="h-12 w-auto"
-            />
-          </Link>
+      <header className="border-b border-white/10 bg-black/80 backdrop-blur-md">
+  <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+    <Link href="/">
+      <img
+        src="/housebandlogo.png"
+        alt="Houseband Live"
+        className="h-12 w-auto"
+      />
+    </Link>
 
-          <nav className="hidden gap-8 text-sm uppercase tracking-[0.25em] text-[#f5ead8]/75 md:flex">
-            <Link href="/" className="transition hover:text-[#d8a25e]">
-              Home
-            </Link>
-            <Link href="/episodes" className="transition hover:text-[#d8a25e]">
-              Episodes
-            </Link>
-          </nav>
-        </div>
-      </header>
+    <nav className="hidden gap-8 text-sm uppercase tracking-[0.25em] text-white/70 md:flex">
+      <Link href="/" className="transition hover:text-white">Home</Link>
+      <Link href="/episodes" className="transition hover:text-white">Episodes</Link>
+      <Link href="/roster" className="transition hover:text-white">Roster</Link>
+      <Link href="/about" className="transition hover:text-white">About</Link>
+      <Link href="/work-with-us" className="transition hover:text-white">Work With Us</Link>
+    </nav>
+
+    <Link
+      href="/work-with-us"
+      className="rounded-full border border-white/20 bg-white px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
+    >
+      Apply
+    </Link>
+  </div>
+</header>
 
       <main className="px-6 py-16 lg:px-10">
         <div className="mx-auto max-w-7xl">
