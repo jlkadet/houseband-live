@@ -184,49 +184,51 @@ export default function EpisodesPage() {
                       rel="noopener noreferrer"
                       className="mt-6 inline-block rounded-full border border-white/20 bg-white px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
                     >
-                      Watch on YouTube
+                      Watch Full Session
                     </a>
                   </div>
                 </div>
 
-                <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
-                  {episode.videos.map((video) => (
-                    <button
-                      key={video.youtubeId}
-                      type="button"
-                      onClick={() => openVideo(video.youtubeId)}
-                      className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] text-left transition hover:scale-[1.01] hover:border-white/25"
-                    >
-                      <div className="relative aspect-video w-full overflow-hidden">
-                        <img
-                          src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
-                          alt={video.title}
-                          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-black/35 transition group-hover:bg-black/20" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-black/75 backdrop-blur-sm">
-                            <div className="ml-1 h-0 w-0 border-b-[10px] border-l-[16px] border-t-[10px] border-b-transparent border-l-white border-t-transparent" />
-                          </div>
-                        </div>
-                        <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
-                          Watch Now
-                        </div>
-                      </div>
+                {episode.videos.length > 1 && (
+  <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
+    {episode.videos.map((video) => (
+      <button
+        key={video.youtubeId}
+        type="button"
+        onClick={() => openVideo(video.youtubeId)}
+        className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] text-left transition hover:scale-[1.01] hover:border-white/25"
+      >
+        <div className="relative aspect-video w-full overflow-hidden">
+          <img
+            src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+            alt={video.title}
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black/35 transition group-hover:bg-black/20" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-black/75 backdrop-blur-sm">
+              <div className="ml-1 h-0 w-0 border-b-[10px] border-l-[16px] border-t-[10px] border-b-transparent border-l-white border-t-transparent" />
+            </div>
+          </div>
+          <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
+            Watch Now
+          </div>
+        </div>
 
-                      <div className="p-5">
-                        <p className="text-xs uppercase tracking-[0.25em] text-white/55">
-                          Live Session
-                        </p>
-                        <h3
-                          className={`${cormorant.className} mt-2 text-2xl font-semibold`}
-                        >
-                          {video.title}
-                        </h3>
-                      </div>
-                    </button>
-                  ))}
-                </div>
+        <div className="p-5">
+          <p className="text-xs uppercase tracking-[0.25em] text-white/55">
+            Live Session
+          </p>
+          <h3
+            className={`${cormorant.className} mt-2 text-2xl font-semibold`}
+          >
+            {video.title}
+          </h3>
+        </div>
+      </button>
+    ))}
+  </div>
+)}
               </div>
             ))}
           </div>
