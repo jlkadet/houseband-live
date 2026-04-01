@@ -36,7 +36,7 @@ export default function EpisodesPage() {
     {
       episodeTitle: "Episode 01 — Debut Sessions",
       subtitle: "Houseband/Live",
-      coverImage: "/episode1-cover.png",
+      coverImage: "/grouppic.png",
       youtubeUrl: "https://www.youtube.com/watch?v=pOStmVxCAkU",
       previewYoutubeId: "pOStmVxCAkU",
       videos: [
@@ -49,7 +49,7 @@ export default function EpisodesPage() {
     {
       episodeTitle: "Episode 02 — Featuring Imani Waters",
       subtitle: "Houseband/Live",
-      coverImage: "/episode2-cover.png",
+      coverImage: "/imaniwaters.png",
       youtubeUrl: "https://www.youtube.com/watch?v=Pp3C_fHKtMw",
       previewYoutubeId: "Pp3C_fHKtMw",
       videos: [
@@ -62,7 +62,7 @@ export default function EpisodesPage() {
     {
       episodeTitle: "Episode 03 — Live Collective",
       subtitle: "Houseband/Live",
-      coverImage: "/episode3-cover.png",
+      coverImage: "/IanChrist.png",
       youtubeUrl: "https://www.youtube.com/watch?v=zxgs9gi_88o",
       previewYoutubeId: "zxgs9gi_88o",
       videos: [
@@ -143,28 +143,27 @@ export default function EpisodesPage() {
               >
                 <div className="mb-6 grid gap-6 sm:mb-8 sm:gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
                   <div className="group relative overflow-hidden rounded-[1.5rem] border border-white/10">
-                    <img
-                      src={episode.coverImage}
-                      alt={episode.episodeTitle}
-                      className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-                    />
+  <img
+    src={`https://img.youtube.com/vi/${episode.previewYoutubeId}/hqdefault.jpg`}
+    alt={episode.episodeTitle}
+    className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+  />
 
-                    <div className="pointer-events-none absolute inset-0 hidden bg-black/20 opacity-0 transition duration-300 group-hover:opacity-100 md:block" />
+  <div className="pointer-events-none absolute inset-0 bg-black/20 transition duration-300 group-hover:bg-black/5" />
 
-                    <div className="absolute inset-0 hidden opacity-0 transition duration-300 group-hover:opacity-100 md:block">
-                      <iframe
-                        className="h-full w-full scale-[1.15]"
-                        src={`https://www.youtube.com/embed/${episode.previewYoutubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${episode.previewYoutubeId}&modestbranding=1&rel=0`}
-                        title={`${episode.episodeTitle} preview`}
-                        allow="autoplay; encrypted-media; picture-in-picture"
-                      />
-                    </div>
+  <div className="absolute inset-0 hidden opacity-0 transition duration-300 group-hover:opacity-100 md:block">
+    <iframe
+      className="h-full w-full scale-[1.1]"
+      src={`https://www.youtube.com/embed/${episode.previewYoutubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${episode.previewYoutubeId}&modestbranding=1&rel=0`}
+      title={`${episode.episodeTitle} preview`}
+      allow="autoplay; encrypted-media; picture-in-picture"
+    />
+  </div>
 
-                    <div className="pointer-events-none absolute left-4 top-4 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
-                      Hover to Preview
-                    </div>
-                  </div>
-
+  <div className="pointer-events-none absolute left-4 top-4 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
+    Hover to Preview
+  </div>
+</div>
                   <div>
                     <p className="text-xs uppercase tracking-[0.3em] text-white/55">
                       {episode.subtitle}
