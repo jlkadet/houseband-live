@@ -100,15 +100,15 @@ export default function WorkWithUsPage() {
 
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
-      <main className="px-6 py-16 lg:px-10">
+      <main className="px-4 py-10 sm:px-6 sm:py-12 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 max-w-4xl">
             <p className="text-sm uppercase tracking-[0.3em] text-white/55">
               Work With Us
             </p>
             <h1
-              className={`${bungee.className} mt-3 text-4xl tracking-wide md:text-6xl`}
-            >
+  className={`${bungee.className} mt-3 text-3xl tracking-wide sm:text-4xl md:text-6xl`}
+>
               Book a Session
             </h1>
             <p className="mt-6 text-lg leading-8 text-white/75">
@@ -119,11 +119,11 @@ export default function WorkWithUsPage() {
             </p>
           </div>
 
-          <section className="grid gap-6 lg:grid-cols-2">
+          <section className="grid gap-4 sm:gap-6 lg:grid-cols-2">
             {packages.map((pkg) => (
               <div
                 key={pkg.name}
-                className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-xl"
+                className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
@@ -159,8 +159,8 @@ export default function WorkWithUsPage() {
             ))}
           </section>
 
-          <section className="mt-10 grid gap-8 lg:grid-cols-[1fr_1fr]">
-            <div className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-xl">
+          <section className="mt-8 grid gap-5 sm:mt-10 sm:gap-8 lg:grid-cols-[1fr_1fr] lg:items-start">
+            <div className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8">
               <p className="text-sm uppercase tracking-[0.3em] text-white/55">
                 What Artists Get
               </p>
@@ -172,7 +172,7 @@ export default function WorkWithUsPage() {
               </ul>
             </div>
 
-            <div className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-xl">
+            <div className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8">
               <p className="text-sm uppercase tracking-[0.3em] text-white/55">
                 How It Works
               </p>
@@ -202,7 +202,7 @@ export default function WorkWithUsPage() {
               </p>
             </div>
 
-            <div className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-2xl">
+            <div className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-2xl sm:p-8">
               <div className="mb-3 text-[10px] uppercase tracking-[0.35em] text-white/60">
                 Artist Intake Form
               </div>

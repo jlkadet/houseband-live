@@ -19,15 +19,15 @@ export default function AboutPage() {
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
 
-      <main className="px-6 py-16 lg:px-10">
+      <main className="px-4 py-10 sm:px-6 sm:py-12 lg:px-10">
         <div className="mx-auto max-w-6xl">
           <div className="mb-16 max-w-4xl">
             <p className="text-sm uppercase tracking-[0.3em] text-white/55">
               About
             </p>
             <h1
-              className={`${bungee.className} mt-3 text-4xl tracking-wide md:text-6xl`}
-            >
+  className={`${bungee.className} mt-3 text-3xl tracking-wide sm:text-4xl md:text-6xl`}
+>
               Built Around Live Performance
             </h1>
             <p className="mt-6 text-lg leading-8 text-white/75">
@@ -38,8 +38,8 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-            <section className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-xl">
+          <div className="grid gap-5 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <section className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8">
               <p className="text-sm uppercase tracking-[0.3em] text-white/55">
                 What We Do
               </p>
@@ -56,7 +56,7 @@ export default function AboutPage() {
               </p>
             </section>
 
-            <section className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-xl">
+            <section className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8">
               <p className="text-sm uppercase tracking-[0.3em] text-white/55">
                 Why It Exists
               </p>
@@ -74,8 +74,8 @@ export default function AboutPage() {
             </section>
           </div>
 
-          <section className="mt-10 grid gap-8 lg:grid-cols-2">
-            <div className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-xl">
+          <section className="mt-8 grid gap-5 sm:mt-10 sm:gap-8 lg:grid-cols-2">
+            <div className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8">
               <p className="text-sm uppercase tracking-[0.3em] text-white/55">
                 What Makes It Different
               </p>
@@ -87,7 +87,7 @@ export default function AboutPage() {
               </ul>
             </div>
 
-            <div className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-xl">
+            <div className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8">
               <p className="text-sm uppercase tracking-[0.3em] text-white/55">
                 Who It’s For
               </p>

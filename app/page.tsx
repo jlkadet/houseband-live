@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
-      <section className="retro-grain retro-frame relative flex min-h-[90svh] items-end overflow-hidden px-4 pb-12 pt-12 sm:px-6 lg:px-10 lg:pb-24 lg:pt-16">
+      <section className="retro-grain retro-frame relative flex min-h-[88svh] items-end overflow-hidden px-4 pb-12 pt-12 sm:px-6 sm:pb-16 sm:pt-14 lg:px-10 lg:pb-24 lg:pt-16">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/grouppic.png')" }}
@@ -48,11 +48,11 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
-            <p className="mb-4 text-xs uppercase tracking-[0.35em] text-white/70 sm:text-sm sm:tracking-[0.45em]">
+            <p className="mb-4 text-xs uppercase tracking-[0.32em] text-white/70 sm:text-sm sm:tracking-[0.45em]">
   Minneapolis Live Session Collective
 </p>
             <h1
-  className={`${bungee.className} text-4xl leading-[0.95] tracking-tight sm:text-6xl md:text-7xl lg:text-[7rem]`}
+  className={`${bungee.className} text-4xl leading-[0.95] tracking-tight sm:text-5xl md:text-7xl lg:text-[7rem]`}
 >
   HOUSEBAND/
   <span className="block text-white/85">LIVE</span>
@@ -182,7 +182,7 @@ export default function Home() {
   Ready to Create a Session?
 </h2>
 
-          <p className="mt-6 text-lg leading-8 text-white/75">
+          <p className="mt-5 max-w-2xl text-sm leading-6 text-white/85 sm:text-base sm:leading-7 md:text-lg">
             We work with artists who want their music presented with intention,
             strong visuals, and real performance energy.
           </p>

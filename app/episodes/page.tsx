@@ -114,15 +114,15 @@ export default function EpisodesPage() {
 
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
-      <main className="px-6 py-12 lg:px-10">
+      <main className="px-4 py-10 sm:px-6 sm:py-12 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12">
+          <div className="mb-10 sm:mb-12">
             <p className="text-sm uppercase tracking-[0.3em] text-white/55">
               Previous Episodes
             </p>
             <h1
-              className={`${bungee.className} mt-3 text-4xl tracking-wide md:text-6xl`}
-            >
+  className={`${bungee.className} mt-3 text-3xl tracking-wide sm:text-4xl md:text-6xl`}
+>
               Watch the Archive
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-white/75">
@@ -131,13 +131,13 @@ export default function EpisodesPage() {
             </p>
           </div>
 
-          <div className="space-y-16">
+          <div className="space-y-10 sm:space-y-16">
             {episodes.map((episode) => (
               <div
                 key={episode.episodeTitle}
-                className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-xl"
+                className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8"
               >
-                <div className="mb-8 grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+                <div className="mb-6 grid gap-6 sm:mb-8 sm:gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
                   <div className="overflow-hidden rounded-[1.5rem] border border-white/10">
                     <img
                       src={episode.coverImage}
@@ -171,7 +171,7 @@ export default function EpisodesPage() {
                   </div>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
                   {episode.videos.map((video) => (
                     <button
                       key={video.youtubeId}

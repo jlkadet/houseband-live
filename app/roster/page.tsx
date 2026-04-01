@@ -57,15 +57,15 @@ export default function RosterPage() {
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
       
-      <main className="px-6 py-16 lg:px-10">
+      <main className="px-4 py-10 sm:px-6 sm:py-12 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12">
             <p className="text-sm uppercase tracking-[0.3em] text-white/55">
               Houseband/Live
             </p>
             <h1
-              className={`${bungee.className} mt-3 text-4xl tracking-wide md:text-6xl`}
-            >
+  className={`${bungee.className} mt-3 text-3xl tracking-wide sm:text-4xl md:text-6xl`}
+>
               Houseband Roster
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-white/75">
@@ -75,11 +75,11 @@ export default function RosterPage() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
             {roster.map((member) => (
               <div
                 key={member.name}
-                className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-xl"
+                className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-6"
               >
                 <div className="mb-5 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/5">
                   <div className="flex aspect-[4/5] items-center justify-center text-sm uppercase tracking-[0.25em] text-white/35">
