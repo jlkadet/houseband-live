@@ -27,6 +27,7 @@ type Episode = {
   subtitle: string;
   coverImage: string;
   youtubeUrl: string;
+  previewYoutubeId: string;
   videos: Video[];
 };
 
@@ -35,8 +36,9 @@ export default function EpisodesPage() {
     {
       episodeTitle: "Episode 01 — Debut Sessions",
       subtitle: "Houseband/Live",
-      coverImage: "/grouppic.png",
+      coverImage: "/episode1-cover.png",
       youtubeUrl: "https://www.youtube.com/watch?v=pOStmVxCAkU",
+      previewYoutubeId: "pOStmVxCAkU",
       videos: [
         {
           title: "AK Fields",
@@ -47,8 +49,9 @@ export default function EpisodesPage() {
     {
       episodeTitle: "Episode 02 — Featuring Imani Waters",
       subtitle: "Houseband/Live",
-      coverImage: "/imaniwaters.png",
+      coverImage: "/episode2-cover.png",
       youtubeUrl: "https://www.youtube.com/watch?v=Pp3C_fHKtMw",
+      previewYoutubeId: "Pp3C_fHKtMw",
       videos: [
         {
           title: "Imani Waters",
@@ -59,8 +62,9 @@ export default function EpisodesPage() {
     {
       episodeTitle: "Episode 03 — Live Collective",
       subtitle: "Houseband/Live",
-      coverImage: "/IanChrist.png",
+      coverImage: "/episode3-cover.png",
       youtubeUrl: "https://www.youtube.com/watch?v=zxgs9gi_88o",
+      previewYoutubeId: "zxgs9gi_88o",
       videos: [
         {
           title: "Ian Chri$t",
@@ -121,8 +125,8 @@ export default function EpisodesPage() {
               Previous Episodes
             </p>
             <h1
-  className={`${bungee.className} mt-3 text-3xl tracking-wide sm:text-4xl md:text-6xl`}
->
+              className={`${bungee.className} mt-3 text-3xl tracking-wide sm:text-4xl md:text-6xl`}
+            >
               Watch the Archive
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-white/75">
@@ -138,12 +142,27 @@ export default function EpisodesPage() {
                 className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8"
               >
                 <div className="mb-6 grid gap-6 sm:mb-8 sm:gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
-                  <div className="overflow-hidden rounded-[1.5rem] border border-white/10">
+                  <div className="group relative overflow-hidden rounded-[1.5rem] border border-white/10">
                     <img
                       src={episode.coverImage}
                       alt={episode.episodeTitle}
-                      className="aspect-[16/10] w-full object-cover"
+                      className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                     />
+
+                    <div className="pointer-events-none absolute inset-0 hidden bg-black/20 opacity-0 transition duration-300 group-hover:opacity-100 md:block" />
+
+                    <div className="absolute inset-0 hidden opacity-0 transition duration-300 group-hover:opacity-100 md:block">
+                      <iframe
+                        className="h-full w-full scale-[1.15]"
+                        src={`https://www.youtube.com/embed/${episode.previewYoutubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${episode.previewYoutubeId}&modestbranding=1&rel=0`}
+                        title={`${episode.episodeTitle} preview`}
+                        allow="autoplay; encrypted-media; picture-in-picture"
+                      />
+                    </div>
+
+                    <div className="pointer-events-none absolute left-4 top-4 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
+                      Hover to Preview
+                    </div>
                   </div>
 
                   <div>
@@ -217,52 +236,28 @@ export default function EpisodesPage() {
 
       {activeVideo && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4 py-8 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 px-3 py-4 backdrop-blur-sm sm:px-4 sm:py-8"
           onClick={closeVideo}
         >
           <div
-            className="relative w-full max-w-5xl rounded-[2rem] border border-white/15 bg-black p-4 shadow-2xl"
+            className="relative w-full max-w-5xl rounded-[1.5rem] border border-white/15 bg-black p-3 shadow-2xl sm:rounded-[2rem] sm:p-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              type="button"
-              onClick={closeVideo}
-              className="absolute right-4 top-4 z-10 rounded-full border border-white/20 bg-black/80 px-3 py-2 text-xs uppercase tracking-[0.2em] text-white transition hover:border-white/40"
-            >
-              Close
-            </button>
-
-            <button
-              type="button"
-              onClick={showPrevVideo}
-              className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/80 px-4 py-3 text-xs uppercase tracking-[0.2em] text-white transition hover:border-white/40"
-            >
-              Prev
-            </button>
-
-            <button
-              type="button"
-              onClick={showNextVideo}
-              className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/80 px-4 py-3 text-xs uppercase tracking-[0.2em] text-white transition hover:border-white/40"
-            >
-              Next
-            </button>
-
-            <div className="mb-4 px-2 pt-2">
-              <p className="text-xs uppercase tracking-[0.25em] text-white/55">
+            <div className="mb-3 px-1 pt-1 sm:mb-4 sm:px-2 sm:pt-2">
+              <p className="text-[10px] uppercase tracking-[0.25em] text-white/55 sm:text-xs">
                 Now Playing
               </p>
               <h3
-                className={`${cormorant.className} mt-2 text-3xl font-semibold`}
+                className={`${cormorant.className} mt-2 text-2xl font-semibold sm:text-3xl`}
               >
                 {activeVideo.title}
               </h3>
-              <p className="mt-1 text-sm text-white/60">
+              <p className="mt-1 text-xs text-white/60 sm:text-sm">
                 {activeVideo.episodeTitle}
               </p>
             </div>
 
-            <div className="aspect-video w-full overflow-hidden rounded-[1.5rem] border border-white/10">
+            <div className="aspect-video w-full overflow-hidden rounded-[1rem] border border-white/10 sm:rounded-[1.5rem]">
               <iframe
                 className="h-full w-full"
                 src={`https://www.youtube.com/embed/${activeVideo.youtubeId}?autoplay=1`}
@@ -270,6 +265,32 @@ export default function EpisodesPage() {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
+            </div>
+
+            <div className="mt-4 flex items-center justify-between gap-3 sm:mt-5">
+              <button
+                type="button"
+                onClick={showPrevVideo}
+                className="inline-flex flex-1 items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:border-white/30 hover:bg-white/10"
+              >
+                Prev
+              </button>
+
+              <button
+                type="button"
+                onClick={closeVideo}
+                className="inline-flex flex-1 items-center justify-center rounded-full bg-white px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-[1.01]"
+              >
+                Close
+              </button>
+
+              <button
+                type="button"
+                onClick={showNextVideo}
+                className="inline-flex flex-1 items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:border-white/30 hover:bg-white/10"
+              >
+                Next
+              </button>
             </div>
           </div>
         </div>
