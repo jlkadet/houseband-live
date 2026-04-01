@@ -33,7 +33,7 @@ export default function WorkWithUsPage() {
   const packages = [
     {
       name: "Live Session",
-      price: "$250",
+      price: "$---",
       description:
         "A focused live session built for artists who want strong performance-driven visuals and a polished final piece.",
       features: [
@@ -44,7 +44,7 @@ export default function WorkWithUsPage() {
     },
     {
       name: "Featured Session",
-      price: "$500",
+      price: "$---",
       description:
         "A deeper creative package for artists who want a more involved session experience, stronger production support, and a more developed rollout.",
       features: [
