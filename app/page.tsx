@@ -127,29 +127,29 @@ export default function Home() {
           />
 
           <nav className="hidden gap-8 text-sm uppercase tracking-[0.25em] text-white/70 md:flex">
-            <Link href="/#sessions" className="transition hover:text-white">
-              Sessions
-            </Link>
-            <Link href="/episodes" className="transition hover:text-white">
-              Episodes
-            </Link>
-            <Link href="/#artists" className="transition hover:text-white">
-              Artists
-            </Link>
-            <Link href="/#about" className="transition hover:text-white">
-              About
-            </Link>
-            <Link href="/#work" className="transition hover:text-white">
-              Booking
-            </Link>
-          </nav>
+  <Link href="/" className="transition hover:text-white">
+    Home
+  </Link>
+  <Link href="/episodes" className="transition hover:text-white">
+    Episodes
+  </Link>
+  <Link href="/roster" className="transition hover:text-white">
+    Roster
+  </Link>
+  <Link href="/about" className="transition hover:text-white">
+    About
+  </Link>
+  <Link href="/work-with-us" className="transition hover:text-white">
+    Work With Us
+  </Link>
+</nav>
 
-          <a
-            href="#contact"
-            className="rounded-full border border-white/20 bg-white px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
-          >
-            Apply to Perform
-          </a>
+          <Link
+  href="/work-with-us"
+  className="rounded-full border border-white/20 bg-white px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
+>
+  Apply to Perform
+</Link>
         </div>
       </header>
 
@@ -186,12 +186,12 @@ export default function Home() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="#contact"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
-              >
-                Book a Session
-              </a>
+              <Link
+  href="/work-with-us"
+  className="rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
+>
+  Book a Session
+</Link>
               <Link
                 href="/episodes"
                 className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-white/10"
