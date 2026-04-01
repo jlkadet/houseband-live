@@ -35,7 +35,7 @@ export default function EpisodesPage() {
     {
       episodeTitle: "Episode 01 — Debut Sessions",
       subtitle: "Houseband/Live",
-      coverImage: "/episode1-cover.png",
+      coverImage: "/grouppic.png",
       youtubeUrl: "https://www.youtube.com/watch?v=pOStmVxCAkU",
       videos: [
         {
@@ -47,7 +47,7 @@ export default function EpisodesPage() {
     {
       episodeTitle: "Episode 02 — Featuring Imani Waters",
       subtitle: "Houseband/Live",
-      coverImage: "/episode2-cover.png",
+      coverImage: "/imaniwaters.png",
       youtubeUrl: "https://www.youtube.com/watch?v=Pp3C_fHKtMw",
       videos: [
         {
@@ -59,7 +59,7 @@ export default function EpisodesPage() {
     {
       episodeTitle: "Episode 03 — Live Collective",
       subtitle: "Houseband/Live",
-      coverImage: "/episode3-cover.png",
+      coverImage: "/IanChrist.png",
       youtubeUrl: "https://www.youtube.com/watch?v=zxgs9gi_88o",
       videos: [
         {
