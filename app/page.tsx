@@ -119,7 +119,7 @@ export default function Home() {
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
       
-      <section className="retro-grain retro-frame relative flex min-h-screen items-end overflow-hidden px-6 pb-16 pt-28 lg:px-10 lg:pb-24">
+      <section className="retro-grain retro-frame relative flex min-h-screen items-end overflow-hidden px-6 pb-16 pt-16 lg:px-10 lg:pb-24">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/grouppic.png')" }}
