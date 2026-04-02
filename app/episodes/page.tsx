@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Bungee, Cormorant_Garamond, Inter } from "next/font/google";
 
 const bungee = Bungee({
@@ -104,6 +104,17 @@ export default function EpisodesPage() {
     }
   };
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const videoId = params.get("video");
+    if (!videoId) return;
+
+    const foundIndex = allVideos.findIndex((video) => video.youtubeId === videoId);
+    if (foundIndex !== -1) {
+      setActiveIndex(foundIndex);
+    }
+  }, [allVideos]);
+
   const closeVideo = () => setActiveIndex(null);
 
   const showPrevVideo = () => {
@@ -143,27 +154,28 @@ export default function EpisodesPage() {
               >
                 <div className="mb-6 grid gap-6 sm:mb-8 sm:gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
                   <div className="group relative overflow-hidden rounded-[1.5rem] border border-white/10">
-  <img
-    src={`https://img.youtube.com/vi/${episode.previewYoutubeId}/hqdefault.jpg`}
-    alt={episode.episodeTitle}
-    className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-  />
+                    <img
+                      src={`https://img.youtube.com/vi/${episode.previewYoutubeId}/hqdefault.jpg`}
+                      alt={episode.episodeTitle}
+                      className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                    />
 
-  <div className="pointer-events-none absolute inset-0 bg-black/20 transition duration-300 group-hover:bg-black/5" />
+                    <div className="pointer-events-none absolute inset-0 bg-black/20 transition duration-300 group-hover:bg-black/5" />
 
-  <div className="absolute inset-0 hidden opacity-0 transition duration-300 group-hover:opacity-100 md:block">
-    <iframe
-      className="h-full w-full scale-[1.1]"
-      src={`https://www.youtube.com/embed/${episode.previewYoutubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${episode.previewYoutubeId}&modestbranding=1&rel=0`}
-      title={`${episode.episodeTitle} preview`}
-      allow="autoplay; encrypted-media; picture-in-picture"
-    />
-  </div>
+                    <div className="absolute inset-0 hidden opacity-0 transition duration-300 group-hover:opacity-100 md:block">
+                      <iframe
+                        className="h-full w-full scale-[1.1]"
+                        src={`https://www.youtube.com/embed/${episode.previewYoutubeId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${episode.previewYoutubeId}&modestbranding=1&rel=0`}
+                        title={`${episode.episodeTitle} preview`}
+                        allow="autoplay; encrypted-media; picture-in-picture"
+                      />
+                    </div>
 
-  <div className="pointer-events-none absolute left-4 top-4 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
-    Hover to Preview
-  </div>
-</div>
+                    <div className="pointer-events-none absolute left-4 top-4 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
+                      Hover to Preview
+                    </div>
+                  </div>
+
                   <div>
                     <p className="text-xs uppercase tracking-[0.3em] text-white/55">
                       {episode.subtitle}
@@ -190,45 +202,45 @@ export default function EpisodesPage() {
                 </div>
 
                 {episode.videos.length > 1 && (
-  <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
-    {episode.videos.map((video) => (
-      <button
-        key={video.youtubeId}
-        type="button"
-        onClick={() => openVideo(video.youtubeId)}
-        className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] text-left transition hover:scale-[1.01] hover:border-white/25"
-      >
-        <div className="relative aspect-video w-full overflow-hidden">
-          <img
-            src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
-            alt={video.title}
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-black/35 transition group-hover:bg-black/20" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-black/75 backdrop-blur-sm">
-              <div className="ml-1 h-0 w-0 border-b-[10px] border-l-[16px] border-t-[10px] border-b-transparent border-l-white border-t-transparent" />
-            </div>
-          </div>
-          <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
-            Watch Now
-          </div>
-        </div>
+                  <div className="grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
+                    {episode.videos.map((video) => (
+                      <button
+                        key={video.youtubeId}
+                        type="button"
+                        onClick={() => openVideo(video.youtubeId)}
+                        className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] text-left transition hover:scale-[1.01] hover:border-white/25"
+                      >
+                        <div className="relative aspect-video w-full overflow-hidden">
+                          <img
+                            src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
+                            alt={video.title}
+                            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-black/35 transition group-hover:bg-black/20" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-black/75 backdrop-blur-sm">
+                              <div className="ml-1 h-0 w-0 border-b-[10px] border-l-[16px] border-t-[10px] border-b-transparent border-l-white border-t-transparent" />
+                            </div>
+                          </div>
+                          <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
+                            Watch Now
+                          </div>
+                        </div>
 
-        <div className="p-5">
-          <p className="text-xs uppercase tracking-[0.25em] text-white/55">
-            Live Session
-          </p>
-          <h3
-            className={`${cormorant.className} mt-2 text-2xl font-semibold`}
-          >
-            {video.title}
-          </h3>
-        </div>
-      </button>
-    ))}
-  </div>
-)}
+                        <div className="p-5">
+                          <p className="text-xs uppercase tracking-[0.25em] text-white/55">
+                            Live Session
+                          </p>
+                          <h3
+                            className={`${cormorant.className} mt-2 text-2xl font-semibold`}
+                          >
+                            {video.title}
+                          </h3>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>

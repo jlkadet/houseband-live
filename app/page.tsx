@@ -22,38 +22,37 @@ export default function Home() {
   const carouselRef = useRef<HTMLDivElement | null>(null);
 
   const featuredVideos = [
-    {
-      title: "AK Fields",
-      subtitle: "Episode 01",
-      image: "https://img.youtube.com/vi/pOStmVxCAkU/hqdefault.jpg",
-      href: "/episodes",
-    },
-    {
-      title: "Imani Waters",
-      subtitle: "Episode 02",
-      image: "https://img.youtube.com/vi/Pp3C_fHKtMw/hqdefault.jpg",
-      href: "/episodes",
-    },
-    {
-      title: "Ian Chri$t",
-      subtitle: "Episode 03",
-      image: "https://img.youtube.com/vi/zxgs9gi_88o/hqdefault.jpg",
-      href: "/episodes",
-    },
-    {
-      title: "Nat Harriet",
-      subtitle: "Episode 03",
-      image: "https://img.youtube.com/vi/qqYYwg5OkC0/hqdefault.jpg",
-      href: "/episodes",
-    },
-    {
-      title: "Khalil Da Visionary",
-      subtitle: "Episode 03",
-      image: "https://img.youtube.com/vi/2zn_BgkmK3Y/hqdefault.jpg",
-      href: "/episodes",
-    },
-  ];
-
+  {
+    title: "AK Fields",
+    subtitle: "Episode 01",
+    image: "https://img.youtube.com/vi/pOStmVxCAkU/hqdefault.jpg",
+    href: "/episodes?video=pOStmVxCAkU",
+  },
+  {
+    title: "Imani Waters",
+    subtitle: "Episode 02",
+    image: "https://img.youtube.com/vi/Pp3C_fHKtMw/hqdefault.jpg",
+    href: "/episodes?video=Pp3C_fHKtMw",
+  },
+  {
+    title: "Ian Chri$t",
+    subtitle: "Episode 03",
+    image: "https://img.youtube.com/vi/zxgs9gi_88o/hqdefault.jpg",
+    href: "/episodes?video=zxgs9gi_88o",
+  },
+  {
+    title: "Nat Harriet",
+    subtitle: "Episode 03",
+    image: "https://img.youtube.com/vi/qqYYwg5OkC0/hqdefault.jpg",
+    href: "/episodes?video=qqYYwg5OkC0",
+  },
+  {
+    title: "Khalil Da Visionary",
+    subtitle: "Episode 03",
+    image: "https://img.youtube.com/vi/2zn_BgkmK3Y/hqdefault.jpg",
+    href: "/episodes?video=2zn_BgkmK3Y",
+  },
+];
   const pageGallery = [
     {
       title: "Episodes",
