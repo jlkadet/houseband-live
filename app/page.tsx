@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Bungee, Cormorant_Garamond, Inter } from "next/font/google";
+import { useRef } from "react";
 
 const bungee = Bungee({
   weight: "400",
@@ -18,47 +19,73 @@ const inter = Inter({
 });
 
 export default function Home() {
-  const galleryItems = [
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+
+  const featuredVideos = [
     {
-      title: "Ian Chri$t",
-      subtitle: "Houseband/Live Session",
-      image: "/IanChrist.png",
+      title: "AK Fields",
+      subtitle: "Episode 01",
+      image: "https://img.youtube.com/vi/pOStmVxCAkU/hqdefault.jpg",
       href: "/episodes",
     },
     {
       title: "Imani Waters",
-      subtitle: "Houseband/Live Session",
-      image: "/imaniwaters.png",
+      subtitle: "Episode 02",
+      image: "https://img.youtube.com/vi/Pp3C_fHKtMw/hqdefault.jpg",
+      href: "/episodes",
+    },
+    {
+      title: "Ian Chri$t",
+      subtitle: "Episode 03",
+      image: "https://img.youtube.com/vi/zxgs9gi_88o/hqdefault.jpg",
       href: "/episodes",
     },
     {
       title: "Nat Harriet",
-      subtitle: "Houseband/Live Session",
-      image: "/natharriet.png",
+      subtitle: "Episode 03",
+      image: "https://img.youtube.com/vi/qqYYwg5OkC0/hqdefault.jpg",
       href: "/episodes",
     },
     {
-      title: "The Houseband",
-      subtitle: "Live Performance",
+      title: "Khalil Da Visionary",
+      subtitle: "Episode 03",
+      image: "https://img.youtube.com/vi/2zn_BgkmK3Y/hqdefault.jpg",
+      href: "/episodes",
+    },
+  ];
+
+  const pageGallery = [
+    {
+      title: "Episodes",
+      subtitle: "Watch the archive",
+      image: "/grouppic.png",
+      href: "/episodes",
+    },
+    {
+      title: "Roster",
+      subtitle: "Meet the houseband",
       image: "/grouppic.png",
       href: "/roster",
     },
     {
-      title: "Watch the Archive",
-      subtitle: "Episodes",
+      title: "About",
+      subtitle: "What Houseband/Live is",
       image: "/grouppic.png",
-      href: "/episodes",
+      href: "/about",
     },
     {
       title: "Work With Us",
-      subtitle: "Apply to Perform",
+      subtitle: "Apply to perform",
       image: "/grouppic.png",
       href: "/work-with-us",
     },
   ];
 
-  const firstRow = [...galleryItems, ...galleryItems];
-  const secondRow = [...galleryItems.slice().reverse(), ...galleryItems.slice().reverse()];
+  const scrollCarousel = (direction: "left" | "right") => {
+    if (!carouselRef.current) return;
+    const amount = direction === "left" ? -340 : 340;
+    carouselRef.current.scrollBy({ left: amount, behavior: "smooth" });
+  };
 
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
@@ -111,69 +138,106 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="overflow-hidden border-t border-white/10 border-b border-white/10 bg-black py-8 sm:py-10">
-        <div className="mb-4 px-4 sm:px-6 lg:px-10">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/50">
-            Sessions / Archive / Roster
-          </p>
-        </div>
+      <section className="border-t border-b border-white/10 bg-black px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-4 flex items-center justify-between gap-4">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-white/50">
+                Featured Videos
+              </p>
+              <h2
+                className={`${bungee.className} mt-2 text-2xl tracking-wide sm:text-3xl`}
+              >
+                Watch the Sessions
+              </h2>
+            </div>
 
-        <div className="space-y-4 sm:space-y-6">
-          <div className="gallery-marquee">
-            <div className="gallery-track">
-              {firstRow.map((item, index) => (
-                <Link
-                  key={`${item.title}-top-${index}`}
-                  href={item.href}
-                  className="group relative block h-[240px] w-[280px] flex-shrink-0 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.04] sm:h-[280px] sm:w-[340px]"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:opacity-90"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                  <div className="absolute inset-0 border border-white/5 rounded-[1.75rem]" />
-
-                  <div className="absolute left-5 bottom-5">
-                    <p className="text-[10px] uppercase tracking-[0.28em] text-white/65">
-                      {item.subtitle}
-                    </p>
-                    <h3 className={`${cormorant.className} mt-2 text-3xl font-semibold text-white`}>
-                      {item.title}
-                    </h3>
-                  </div>
-                </Link>
-              ))}
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={() => scrollCarousel("left")}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10"
+                aria-label="Scroll videos left"
+              >
+                ←
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollCarousel("right")}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10"
+                aria-label="Scroll videos right"
+              >
+                →
+              </button>
             </div>
           </div>
 
-          <div className="gallery-marquee gallery-marquee-reverse">
-            <div className="gallery-track">
-              {secondRow.map((item, index) => (
-                <Link
-                  key={`${item.title}-bottom-${index}`}
-                  href={item.href}
-                  className="group relative block h-[180px] w-[240px] flex-shrink-0 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] sm:h-[220px] sm:w-[300px]"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:opacity-90"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+          <div
+            ref={carouselRef}
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10"
+          >
+            {featuredVideos.map((item) => (
+              <Link
+                key={item.title}
+                href={item.href}
+                className="group relative block h-[240px] w-[280px] snap-start flex-shrink-0 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] sm:h-[280px] sm:w-[340px]"
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/70 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
+                  Watch
+                </div>
+                <div className="absolute left-5 bottom-5">
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-white/65">
+                    {item.subtitle}
+                  </p>
+                  <h3
+                    className={`${cormorant.className} mt-2 text-3xl font-semibold text-white`}
+                  >
+                    {item.title}
+                  </h3>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                  <div className="absolute left-4 bottom-4">
-                    <p className="text-[10px] uppercase tracking-[0.25em] text-white/60">
-                      {item.subtitle}
-                    </p>
-                    <h3 className={`${cormorant.className} mt-1 text-2xl font-semibold text-white`}>
-                      {item.title}
-                    </h3>
-                  </div>
-                </Link>
-              ))}
-            </div>
+      <section className="border-b border-white/10 bg-black px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <p className="mb-4 text-xs uppercase tracking-[0.3em] text-white/50">
+            Explore
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {pageGallery.map((item) => (
+              <Link
+                key={item.title}
+                href={item.href}
+                className="group relative block overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04]"
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="h-[220px] w-full object-cover transition duration-500 group-hover:scale-105 group-hover:opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                <div className="absolute left-4 bottom-4">
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-white/60">
+                    {item.subtitle}
+                  </p>
+                  <h3
+                    className={`${cormorant.className} mt-1 text-2xl font-semibold text-white`}
+                  >
+                    {item.title}
+                  </h3>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -221,57 +285,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
-      <style jsx global>{`
-        .gallery-marquee {
-          overflow: hidden;
-          width: 100%;
-        }
-
-        .gallery-track {
-          display: flex;
-          gap: 1rem;
-          width: max-content;
-          animation: marquee-left 38s linear infinite;
-          padding: 0 1rem;
-        }
-
-        .gallery-marquee-reverse .gallery-track {
-          animation: marquee-right 42s linear infinite;
-        }
-
-        .gallery-marquee:hover .gallery-track {
-          animation-play-state: paused;
-        }
-
-        @keyframes marquee-left {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        @keyframes marquee-right {
-          0% {
-            transform: translateX(-50%);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-
-        @media (max-width: 640px) {
-          .gallery-track {
-            animation-duration: 28s;
-          }
-
-          .gallery-marquee-reverse .gallery-track {
-            animation-duration: 32s;
-          }
-        }
-      `}</style>
     </div>
   );
 }
