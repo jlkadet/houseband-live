@@ -31,11 +31,13 @@ export default function AboutPage() {
               Built Around Live Performance
             </h1>
             <p className="mt-6 text-lg leading-8 text-white/75">
-              Houseband/Live is a live session platform built to help artists
-              turn performance into something visual, memorable, and worth
-              sharing. We create sessions that feel intentional from the first
-              note to the final frame.
+              Houseband/Live is a live session platform built around performance and
+               collaboration. We bring artists together with a full band and film sessions 
+               that feel real. 
             </p>
+            <p className="mt-4 text-white/60">
+  Based in Minneapolis.
+</p>
           </div>
 
           <div className="grid gap-5 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr]">

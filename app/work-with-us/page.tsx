@@ -112,10 +112,7 @@ export default function WorkWithUsPage() {
               Book a Session
             </h1>
             <p className="mt-6 text-lg leading-8 text-white/75">
-              Houseband/Live works with artists who want more than a simple
-              recording. Our sessions are built to create strong live content,
-              sharper visual identity, and a performance that feels worth
-              putting into the world.
+              We're always looking for artists to collaborate with. 
             </p>
           </div>
 
@@ -208,8 +205,7 @@ export default function WorkWithUsPage() {
               </div>
 
               <p className="mb-5 text-sm text-white/60">
-                Tell us about your sound, your goals, and the kind of session
-                you want to create.
+                If you're interested in performing a session, send us your info and we'll be in touch. 
               </p>
 
               <form onSubmit={handleSubmit} className="grid gap-5">

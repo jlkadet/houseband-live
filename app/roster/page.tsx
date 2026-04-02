@@ -20,37 +20,37 @@ export default function RosterPage() {
     {
       name: "Poe",
       role: "Organizer",
-      bio: "Poe helps shape the direction of Houseband/Live and plays a central role in organizing sessions, collaboration, and the overall creative vision.",
+      bio: "",
     },
     {
       name: "Dio",
       role: "Musician / Organizer",
-      bio: "Dio is both a musician and an organizer within Houseband/Live, helping bring together the musical and logistical sides of each session.",
+      bio: "",
     },
     {
       name: "Justin",
       role: "Trumpet / Keys",
-      bio: "Justin plays trumpet and keys, contributing live musicianship, arrangement support, and collaborative energy across Houseband/Live sessions.",
+      bio: "",
     },
     {
       name: "Reign",
       role: "Bass",
-      bio: "Reign holds down the low end on bass and helps give each session a strong musical foundation.",
+      bio: "",
     },
     {
       name: "Joy",
       role: "Keys",
-      bio: "Joy plays keys and adds harmonic texture and depth to the Houseband/Live sound.",
+      bio: "",
     },
     {
       name: "Aaron",
-      role: "Drums",
-      bio: "Aaron plays drums and drives the rhythm section with energy, feel, and consistency across live performances.",
+      role: "Drums / Keys",
+      bio: "",
     },
     {
       name: "Logyn",
       role: "Backup Vocals",
-      bio: "Logyn provides backup vocals and helps add dynamic vocal support to featured sessions.",
+      bio: "",
     },
   ];
 

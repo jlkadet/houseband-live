@@ -63,10 +63,7 @@ export default function Home() {
             </div>
 
             <p className="mt-5 max-w-2xl text-sm leading-6 text-white/85 sm:text-base sm:leading-7 md:text-lg">
-  Houseband/Live creates filmed live sessions for artists ready to
-  turn strong performances into standout visual content. We bring
-  together musicians, creative direction, and live energy to build
-  sessions that feel intentional, collaborative, and built to travel.
+  Live sessions for artists in Minneapolis. 
 </p>
 
             <p className="mt-4 text-sm text-white/60">
@@ -97,9 +94,7 @@ export default function Home() {
             <p
               className={`${cormorant.className} mt-4 text-3xl font-semibold leading-9 text-white`}
             >
-              We produce live session experiences that give artists strong
-              visuals, real collaboration, and a performance they can proudly
-              put into the world.
+              We film live sessions with artists. 
             </p>
           </div>
         </div>
@@ -119,8 +114,7 @@ export default function Home() {
           </div>
 
           <p className="max-w-xl text-white/70">
-            A look at the performance quality, visual tone, and creative
-            collaboration artists can expect when they create with Houseband/Live.
+            Recent sessions. 
           </p>
         </div>
 
@@ -183,8 +177,7 @@ export default function Home() {
 </h2>
 
           <p className="mt-5 max-w-2xl text-sm leading-6 text-white/85 sm:text-base sm:leading-7 md:text-lg">
-            We work with artists who want their music presented with intention,
-            strong visuals, and real performance energy.
+            Apply to perform with Houseband/Live. 
           </p>
 
           <Link
