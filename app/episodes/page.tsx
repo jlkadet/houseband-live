@@ -178,13 +178,13 @@ export default function EpisodesPage() {
       <main className="px-4 py-10 sm:px-6 sm:py-12 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 sm:mb-12">
-            <p className="text-sm uppercase tracking-[0.3em] text-white/55">
+            <p className="text-sm uppercase tracking-[0.3em] text-[#f2d3a2]/70">
               Episodes
             </p>
             <h1
               className={`${bungee.className} mt-3 text-3xl tracking-wide sm:text-4xl md:text-6xl`}
             >
-              Archive
+              Press Play
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
               Live sessions from Houseband/Live.
@@ -192,7 +192,7 @@ export default function EpisodesPage() {
           </div>
 
           <div className="space-y-10 sm:space-y-16">
-            {episodes.map((episode) => (
+            {episodes.map((episode, episodeIndex) => (
               <div
                 key={episode.episodeTitle}
                 className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8"
@@ -203,12 +203,12 @@ export default function EpisodesPage() {
                     onClick={() => openVideo(episode.previewYoutubeId)}
                     onMouseEnter={() => setHoveredEpisode(episode.episodeTitle)}
                     onMouseLeave={() => setHoveredEpisode(null)}
-                    className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 text-left"
+                    className="group relative overflow-hidden rounded-[1.75rem] border border-white/10 text-left transition hover:-rotate-[1deg] hover:scale-[1.01]"
                   >
                     <img
                       src={`https://img.youtube.com/vi/${episode.previewYoutubeId}/hqdefault.jpg`}
                       alt={episode.episodeTitle}
-                      className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+                      className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.05]"
                     />
 
                     <div className="pointer-events-none absolute inset-0 bg-black/20 transition duration-300 group-hover:bg-black/5" />
@@ -224,18 +224,22 @@ export default function EpisodesPage() {
                       </div>
                     )}
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
 
-                    <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
+                    <div className="absolute left-4 top-4 rounded-full border border-[#d8a25e]/30 bg-[#120d0b]/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]">
                       Play
                     </div>
 
+                    <div className="absolute right-4 top-4 rounded-full border border-white/15 bg-black/60 px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-white/70">
+                      {episodeIndex + 1}
+                    </div>
+
                     <div className="absolute left-5 bottom-5">
-                      <p className="text-[10px] uppercase tracking-[0.25em] text-white/60">
+                      <p className="text-[10px] uppercase tracking-[0.25em] text-white/55">
                         {episode.episodeTitle}
                       </p>
                       <h3
-                        className={`${cormorant.className} mt-2 text-3xl font-semibold text-white`}
+                        className={`${cormorant.className} mt-2 text-4xl font-semibold text-white`}
                       >
                         {episode.subtitle}
                       </h3>
@@ -243,7 +247,7 @@ export default function EpisodesPage() {
                   </button>
 
                   <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-white/55">
+                    <p className="text-xs uppercase tracking-[0.3em] text-[#f2d3a2]/70">
                       Houseband/Live
                     </p>
                     <h2
@@ -259,7 +263,7 @@ export default function EpisodesPage() {
                       <button
                         type="button"
                         onClick={() => openVideo(episode.previewYoutubeId)}
-                        className="inline-block rounded-full bg-white px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
+                        className="inline-block rounded-full bg-[#f2d3a2] px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
                       >
                         Watch Here
                       </button>
@@ -268,7 +272,7 @@ export default function EpisodesPage() {
                         href={episode.youtubeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block rounded-full border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-white/10"
+                        className="inline-block rounded-full border border-[#d8a25e]/20 bg-[#d8a25e]/10 px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#f2d3a2] transition hover:bg-[#d8a25e]/20"
                       >
                         YouTube
                       </a>
@@ -283,7 +287,7 @@ export default function EpisodesPage() {
                         key={video.youtubeId}
                         type="button"
                         onClick={() => openVideo(video.youtubeId)}
-                        className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] text-left transition hover:scale-[1.01] hover:border-white/25"
+                        className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] text-left transition hover:-rotate-[1deg] hover:scale-[1.01] hover:border-[#d8a25e]/20"
                       >
                         <div className="relative aspect-video w-full overflow-hidden">
                           <img
@@ -293,14 +297,18 @@ export default function EpisodesPage() {
                           />
                           <div className="absolute inset-0 bg-black/35 transition group-hover:bg-black/20" />
                           <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-black/75 backdrop-blur-sm">
-                              <div className="ml-1 h-0 w-0 border-b-[10px] border-l-[16px] border-t-[10px] border-b-transparent border-l-white border-t-transparent" />
+                            <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#d8a25e]/25 bg-black/75 backdrop-blur-sm">
+                              <div className="ml-1 h-0 w-0 border-b-[10px] border-l-[16px] border-t-[10px] border-b-transparent border-l-[#f2d3a2] border-t-transparent" />
                             </div>
+                          </div>
+
+                          <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/60 px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-white/70">
+                            Video
                           </div>
                         </div>
 
                         <div className="p-5">
-                          <p className="text-xs uppercase tracking-[0.25em] text-white/55">
+                          <p className="text-xs uppercase tracking-[0.25em] text-[#f2d3a2]/70">
                             Session
                           </p>
                           <h3
@@ -321,16 +329,16 @@ export default function EpisodesPage() {
 
       {activeVideo && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 px-3 py-4 backdrop-blur-sm sm:px-4 sm:py-8"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 px-3 py-4 backdrop-blur-md sm:px-4 sm:py-8"
           onClick={closeVideo}
         >
           <div
-            className="relative w-full max-w-5xl rounded-[1.5rem] border border-white/15 bg-black p-3 shadow-2xl sm:rounded-[2rem] sm:p-4"
+            className="relative w-full max-w-5xl rounded-[1.5rem] border border-[#d8a25e]/20 bg-[#050505] p-3 shadow-2xl sm:rounded-[2rem] sm:p-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-3 flex items-start justify-between gap-4 px-1 pt-1 sm:mb-4 sm:px-2 sm:pt-2">
+            <div className="mb-3 flex items-start justify-between gap-4 border-b border-white/10 px-1 pb-3 pt-1 sm:mb-4 sm:px-2 sm:pb-4 sm:pt-2">
               <div>
-                <p className="text-[10px] uppercase tracking-[0.25em] text-white/55 sm:text-xs">
+                <p className="text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]/70 sm:text-xs">
                   Now Playing
                 </p>
                 <h3
@@ -362,7 +370,7 @@ export default function EpisodesPage() {
               <button
                 type="button"
                 onClick={showPrevVideo}
-                className="inline-flex flex-1 items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:border-white/30 hover:bg-white/10"
+                className="inline-flex flex-1 items-center justify-center rounded-full border border-[#d8a25e]/20 bg-[#d8a25e]/10 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#f2d3a2] transition hover:bg-[#d8a25e]/20"
               >
                 Prev
               </button>
@@ -370,7 +378,7 @@ export default function EpisodesPage() {
               <button
                 type="button"
                 onClick={closeVideo}
-                className="inline-flex flex-1 items-center justify-center rounded-full bg-white px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-[1.01]"
+                className="inline-flex flex-1 items-center justify-center rounded-full bg-[#f2d3a2] px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-[1.01]"
               >
                 Close
               </button>
@@ -378,7 +386,7 @@ export default function EpisodesPage() {
               <button
                 type="button"
                 onClick={showNextVideo}
-                className="inline-flex flex-1 items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:border-white/30 hover:bg-white/10"
+                className="inline-flex flex-1 items-center justify-center rounded-full border border-[#d8a25e]/20 bg-[#d8a25e]/10 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#f2d3a2] transition hover:bg-[#d8a25e]/20"
               >
                 Next
               </button>
