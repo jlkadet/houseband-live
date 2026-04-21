@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import SiteHeader from "@/components/site-header";
 
@@ -7,16 +7,20 @@ export const metadata: Metadata = {
   description: "Live sessions for artists ready to stand out.",
 };
 
+export const viewport: Viewport = {
+  themeColor: "#000000",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-black">
       <body className="bg-black text-white">
         <SiteHeader />
-        <main className="pt-24">{children}</main>
+        <main className="bg-black pt-20 sm:pt-24">{children}</main>
       </body>
     </html>
   );
