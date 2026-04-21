@@ -65,7 +65,7 @@ export default function Home() {
   const pageGallery = [
     {
       title: "Episodes",
-      subtitle: "Watch the archive",
+      subtitle: "Watch the sessions",
       image: "/grouppic.png",
       href: "/episodes",
     },
@@ -146,12 +146,18 @@ export default function Home() {
           style={{ backgroundImage: "url('/grouppic.png')" }}
         />
         <div className="absolute inset-0 bg-black/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.82)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_28%,rgba(0,0,0,0.82)_100%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
+
+        <div className="absolute left-4 top-24 hidden rounded-full border border-[#d8a25e]/40 bg-[#d8a25e]/10 px-4 py-2 text-[10px] uppercase tracking-[0.3em] text-[#f2d3a2] md:block">
+          Live / Loud / Local
+        </div>
+
+        <div className="absolute right-6 top-32 hidden h-20 w-20 rounded-full border border-[#d8a25e]/20 bg-[#d8a25e]/10 blur-2xl md:block" />
 
         <div className="relative z-10 mx-auto flex min-h-[78svh] w-full max-w-7xl flex-col justify-end">
           <div className="max-w-4xl">
-            <p className="mb-4 text-xs uppercase tracking-[0.35em] text-white/60 sm:text-sm sm:tracking-[0.45em]">
+            <p className="mb-4 text-xs uppercase tracking-[0.35em] text-[#f2d3a2]/80 sm:text-sm sm:tracking-[0.45em]">
               Minneapolis Live Session Collective
             </p>
 
@@ -159,10 +165,10 @@ export default function Home() {
               className={`${bungee.className} text-5xl leading-[0.9] tracking-tight sm:text-6xl md:text-7xl lg:text-[7.5rem]`}
             >
               HOUSEBAND/
-              <span className="block text-white/90">LIVE</span>
+              <span className="block text-white">LIVE</span>
             </h1>
 
-            <div className="mt-5 inline-block rounded-full border border-white/20 bg-white/5 px-4 py-2 text-[10px] uppercase tracking-[0.3em] text-white/75">
+            <div className="mt-5 inline-block rounded-full border border-[#d8a25e]/35 bg-[#d8a25e]/10 px-4 py-2 text-[10px] uppercase tracking-[0.3em] text-[#f2d3a2]">
               Now Booking — Minneapolis, MN
             </div>
 
@@ -173,7 +179,7 @@ export default function Home() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
                 href="/work-with-us"
-                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
+                className="inline-flex items-center justify-center rounded-full bg-[#f2d3a2] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
               >
                 Apply
               </Link>
@@ -193,13 +199,13 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-5 flex items-end justify-between gap-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-white/45">
+              <p className="text-xs uppercase tracking-[0.3em] text-[#f2d3a2]/70">
                 Sessions
               </p>
               <h2
                 className={`${bungee.className} mt-2 text-2xl tracking-wide sm:text-3xl`}
               >
-                Featured Videos
+                Press Play
               </h2>
             </div>
 
@@ -207,7 +213,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => scrollCarousel("left")}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d8a25e]/20 bg-[#d8a25e]/10 text-[#f2d3a2] transition hover:bg-[#d8a25e]/20"
                 aria-label="Scroll left"
               >
                 ←
@@ -215,7 +221,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => scrollCarousel("right")}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#d8a25e]/20 bg-[#d8a25e]/10 text-[#f2d3a2] transition hover:bg-[#d8a25e]/20"
                 aria-label="Scroll right"
               >
                 →
@@ -232,17 +238,21 @@ export default function Home() {
                 key={item.title}
                 type="button"
                 onClick={() => openVideo(index)}
-                className="group relative block h-[250px] w-[290px] snap-start flex-shrink-0 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.04] text-left sm:h-[300px] sm:w-[380px]"
+                className="group relative block h-[250px] w-[290px] snap-start flex-shrink-0 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.04] text-left transition hover:-rotate-[1deg] hover:scale-[1.01] sm:h-[300px] sm:w-[380px]"
               >
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
 
-                <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/70 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
+                <div className="absolute left-4 top-4 rounded-full border border-[#d8a25e]/30 bg-[#120d0b]/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]">
                   Play
+                </div>
+
+                <div className="absolute right-4 top-4 rounded-full border border-white/15 bg-black/60 px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-white/70">
+                  Video
                 </div>
 
                 <div className="absolute left-5 bottom-5">
@@ -263,24 +273,32 @@ export default function Home() {
 
       <section className="border-b border-white/10 bg-black px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <p className="mb-4 text-xs uppercase tracking-[0.3em] text-white/45">
+          <p className="mb-4 text-xs uppercase tracking-[0.3em] text-[#f2d3a2]/70">
             Explore
           </p>
 
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {pageGallery.map((item) => (
+            {pageGallery.map((item, idx) => (
               <Link
                 key={item.title}
                 href={item.href}
-                className="group relative block overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04]"
+                className={`group relative block overflow-hidden rounded-[1.5rem] border bg-white/[0.04] ${
+                  idx % 2 === 0
+                    ? "border-[#d8a25e]/20"
+                    : "border-white/10"
+                }`}
               >
-                <div className="absolute inset-0 bg-black/25" />
                 <img
                   src={item.image}
                   alt={item.title}
                   className="h-[220px] w-full object-cover transition duration-500 group-hover:scale-105 group-hover:opacity-90"
                 />
+                <div className="absolute inset-0 bg-black/20" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+                <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/60 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-white/70">
+                  {idx + 1}
+                </div>
 
                 <div className="absolute left-4 bottom-4">
                   <p className="text-[10px] uppercase tracking-[0.25em] text-white/55">
@@ -300,14 +318,14 @@ export default function Home() {
 
       <section className="border-t border-white/10 px-4 py-16 text-center sm:px-6 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-3xl">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/45">
+          <p className="text-xs uppercase tracking-[0.3em] text-[#f2d3a2]/70">
             Work With Us
           </p>
 
           <h2
             className={`${bungee.className} mt-4 text-2xl tracking-wide sm:text-3xl md:text-5xl`}
           >
-            Want to do a session with us?
+            Be in the next session.
           </h2>
 
           <p className="mt-6 text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
@@ -316,7 +334,7 @@ export default function Home() {
 
           <Link
             href="/work-with-us"
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
+            className="mt-8 inline-flex items-center justify-center rounded-full bg-[#f2d3a2] px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
           >
             Apply
           </Link>
@@ -329,12 +347,12 @@ export default function Home() {
           onClick={closeVideo}
         >
           <div
-            className="relative w-full max-w-5xl rounded-[1.5rem] border border-white/15 bg-[#050505] p-3 shadow-2xl sm:rounded-[2rem] sm:p-4"
+            className="relative w-full max-w-5xl rounded-[1.5rem] border border-[#d8a25e]/20 bg-[#050505] p-3 shadow-2xl sm:rounded-[2rem] sm:p-4"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-3 flex items-start justify-between gap-4 border-b border-white/10 px-1 pb-3 pt-1 sm:mb-4 sm:px-2 sm:pb-4 sm:pt-2">
               <div>
-                <p className="text-[10px] uppercase tracking-[0.25em] text-white/55 sm:text-xs">
+                <p className="text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]/70 sm:text-xs">
                   Now Playing
                 </p>
                 <h3
@@ -366,7 +384,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={showPrevVideo}
-                className="inline-flex flex-1 items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:border-white/30 hover:bg-white/10"
+                className="inline-flex flex-1 items-center justify-center rounded-full border border-[#d8a25e]/20 bg-[#d8a25e]/10 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#f2d3a2] transition hover:bg-[#d8a25e]/20"
               >
                 Prev
               </button>
@@ -374,7 +392,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={closeVideo}
-                className="inline-flex flex-1 items-center justify-center rounded-full bg-white px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-[1.01]"
+                className="inline-flex flex-1 items-center justify-center rounded-full bg-[#f2d3a2] px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-[1.01]"
               >
                 Close
               </button>
@@ -382,7 +400,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={showNextVideo}
-                className="inline-flex flex-1 items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:border-white/30 hover:bg-white/10"
+                className="inline-flex flex-1 items-center justify-center rounded-full border border-[#d8a25e]/20 bg-[#d8a25e]/10 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#f2d3a2] transition hover:bg-[#d8a25e]/20"
               >
                 Next
               </button>
@@ -392,7 +410,7 @@ export default function Home() {
               <Link
                 href="/episodes"
                 onClick={closeVideo}
-                className="text-xs uppercase tracking-[0.22em] text-white/55 transition hover:text-white"
+                className="text-xs uppercase tracking-[0.22em] text-white/55 transition hover:text-[#f2d3a2]"
               >
                 Go to full archive
               </Link>
