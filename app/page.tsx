@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Bungee, Cormorant_Garamond, Inter } from "next/font/google";
 
 const bungee = Bungee({
@@ -93,18 +93,16 @@ export default function Home() {
 
   const scrollCarousel = (direction: "left" | "right") => {
     if (!carouselRef.current) return;
-    const amount = direction === "left" ? -340 : 340;
+    const amount = direction === "left" ? -320 : 320;
     carouselRef.current.scrollBy({ left: amount, behavior: "smooth" });
   };
 
   const openVideo = (index: number) => {
     setActiveIndex(index);
-    document.body.style.overflow = "hidden";
   };
 
   const closeVideo = () => {
     setActiveIndex(null);
-    document.body.style.overflow = "";
   };
 
   const showPrevVideo = () => {
@@ -117,6 +115,29 @@ export default function Home() {
     setActiveIndex((activeIndex + 1) % featuredVideos.length);
   };
 
+  useEffect(() => {
+    if (activeIndex !== null) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [activeIndex]);
+
+  useEffect(() => {
+    if (activeIndex === null) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeVideo();
+      if (e.key === "ArrowLeft") showPrevVideo();
+      if (e.key === "ArrowRight") showNextVideo();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeIndex]);
+
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
       <section className="relative overflow-hidden px-4 pb-14 pt-12 sm:px-6 sm:pb-16 sm:pt-14 lg:px-10 lg:pb-20 lg:pt-16">
@@ -124,11 +145,11 @@ export default function Home() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/grouppic.png')" }}
         />
-        <div className="absolute inset-0 bg-black/35" />
+        <div className="absolute inset-0 bg-black/30" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_35%,rgba(0,0,0,0.8)_100%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
 
-        <div className="relative z-10 mx-auto flex min-h-[78svh] w-full max-w-7xl flex-col justify-end">
+        <div className="relative z-10 mx-auto flex min-h-[76svh] w-full max-w-7xl flex-col justify-end">
           <div className="max-w-4xl">
             <p className="mb-4 text-xs uppercase tracking-[0.35em] text-white/60 sm:text-sm sm:tracking-[0.45em]">
               Minneapolis Live Session Collective
@@ -276,7 +297,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-4 py-20 sm:px-6 lg:px-10 lg:py-24">
+      <section className="px-4 py-16 sm:px-6 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-white/45">
             About
@@ -295,7 +316,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-white/10 px-4 py-20 text-center sm:px-6 lg:px-10 lg:py-24">
+      <section className="border-t border-white/10 px-4 py-16 text-center sm:px-6 lg:px-10 lg:py-20">
         <div className="mx-auto max-w-3xl">
           <p className="text-xs uppercase tracking-[0.3em] text-white/45">
             Work With Us
@@ -383,6 +404,16 @@ export default function Home() {
               >
                 Next
               </button>
+            </div>
+
+            <div className="mt-4 text-center">
+              <Link
+                href="/episodes"
+                onClick={closeVideo}
+                className="text-xs uppercase tracking-[0.22em] text-white/55 transition hover:text-white"
+              >
+                Go to full archive
+              </Link>
             </div>
           </div>
         </div>
