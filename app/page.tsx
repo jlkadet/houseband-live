@@ -65,7 +65,7 @@ export default function Home() {
   const pageGallery = [
     {
       title: "Episodes",
-      subtitle: "Watch the sessions",
+      subtitle: "Watch the archive",
       image: "/grouppic.png",
       href: "/episodes",
     },
@@ -145,28 +145,28 @@ export default function Home() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/grouppic.png')" }}
         />
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_35%,rgba(0,0,0,0.8)_100%)]" />
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.82)_100%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
 
-        <div className="relative z-10 mx-auto flex min-h-[76svh] w-full max-w-7xl flex-col justify-end">
+        <div className="relative z-10 mx-auto flex min-h-[78svh] w-full max-w-7xl flex-col justify-end">
           <div className="max-w-4xl">
             <p className="mb-4 text-xs uppercase tracking-[0.35em] text-white/60 sm:text-sm sm:tracking-[0.45em]">
               Minneapolis Live Session Collective
             </p>
 
             <h1
-              className={`${bungee.className} text-4xl leading-[0.95] tracking-tight sm:text-5xl md:text-7xl lg:text-[7rem]`}
+              className={`${bungee.className} text-5xl leading-[0.9] tracking-tight sm:text-6xl md:text-7xl lg:text-[7.5rem]`}
             >
               HOUSEBAND/
-              <span className="block text-white/85">LIVE</span>
+              <span className="block text-white/90">LIVE</span>
             </h1>
 
             <div className="mt-5 inline-block rounded-full border border-white/20 bg-white/5 px-4 py-2 text-[10px] uppercase tracking-[0.3em] text-white/75">
               Now Booking — Minneapolis, MN
             </div>
 
-            <p className="mt-6 max-w-xl text-base leading-7 text-white/80 sm:text-lg">
+            <p className="mt-6 max-w-lg text-lg leading-7 text-white/80 sm:text-xl">
               Raw sessions. Real artists.
             </p>
 
@@ -182,7 +182,7 @@ export default function Home() {
                 href="/episodes"
                 className="inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-white/10"
               >
-                Watch
+                Archive
               </Link>
             </div>
           </div>
@@ -191,7 +191,7 @@ export default function Home() {
 
       <section className="border-t border-b border-white/10 bg-black px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-4 flex items-end justify-between gap-4">
+          <div className="mb-5 flex items-end justify-between gap-4">
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-white/45">
                 Sessions
@@ -199,7 +199,7 @@ export default function Home() {
               <h2
                 className={`${bungee.className} mt-2 text-2xl tracking-wide sm:text-3xl`}
               >
-                Watch the Archive
+                Featured Videos
               </h2>
             </div>
 
@@ -232,25 +232,25 @@ export default function Home() {
                 key={item.title}
                 type="button"
                 onClick={() => openVideo(index)}
-                className="group relative block h-[240px] w-[280px] snap-start flex-shrink-0 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] text-left sm:h-[280px] sm:w-[340px]"
+                className="group relative block h-[250px] w-[290px] snap-start flex-shrink-0 overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.04] text-left sm:h-[300px] sm:w-[380px]"
               >
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
 
                 <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/70 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
                   Play
                 </div>
 
                 <div className="absolute left-5 bottom-5">
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-white/60">
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-white/55">
                     {item.subtitle}
                   </p>
                   <h3
-                    className={`${cormorant.className} mt-2 text-3xl font-semibold text-white`}
+                    className={`${cormorant.className} mt-2 text-4xl font-semibold text-white`}
                   >
                     {item.title}
                   </h3>
@@ -274,6 +274,7 @@ export default function Home() {
                 href={item.href}
                 className="group relative block overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04]"
               >
+                <div className="absolute inset-0 bg-black/25" />
                 <img
                   src={item.image}
                   alt={item.title}
@@ -282,11 +283,11 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
                 <div className="absolute left-4 bottom-4">
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-white/60">
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-white/55">
                     {item.subtitle}
                   </p>
                   <h3
-                    className={`${cormorant.className} mt-1 text-2xl font-semibold text-white`}
+                    className={`${cormorant.className} mt-1 text-3xl font-semibold text-white`}
                   >
                     {item.title}
                   </h3>
@@ -294,25 +295,6 @@ export default function Home() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="px-4 py-16 sm:px-6 lg:px-10 lg:py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/45">
-            About
-          </p>
-
-          <h2
-            className={`${bungee.className} mt-4 text-2xl tracking-wide sm:text-3xl md:text-5xl`}
-          >
-            Built Around Live Performance
-          </h2>
-
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
-            Houseband/Live is a live session platform built around performance,
-            collaboration, and artists we believe in.
-          </p>
         </div>
       </section>
 
@@ -343,14 +325,14 @@ export default function Home() {
 
       {activeVideo && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 px-3 py-4 backdrop-blur-sm sm:px-4 sm:py-8"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 px-3 py-4 backdrop-blur-md sm:px-4 sm:py-8"
           onClick={closeVideo}
         >
           <div
-            className="relative w-full max-w-5xl rounded-[1.5rem] border border-white/15 bg-black p-3 shadow-2xl sm:rounded-[2rem] sm:p-4"
+            className="relative w-full max-w-5xl rounded-[1.5rem] border border-white/15 bg-[#050505] p-3 shadow-2xl sm:rounded-[2rem] sm:p-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-3 flex items-start justify-between gap-4 px-1 pt-1 sm:mb-4 sm:px-2 sm:pt-2">
+            <div className="mb-3 flex items-start justify-between gap-4 border-b border-white/10 px-1 pb-3 pt-1 sm:mb-4 sm:px-2 sm:pb-4 sm:pt-2">
               <div>
                 <p className="text-[10px] uppercase tracking-[0.25em] text-white/55 sm:text-xs">
                   Now Playing
