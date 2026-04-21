@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Bungee, Cormorant_Garamond, Inter } from "next/font/google";
 
 const bungee = Bungee({
@@ -18,39 +18,47 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+type FeaturedVideo = {
+  title: string;
+  subtitle: string;
+  image: string;
+  youtubeId: string;
+};
+
 export default function Home() {
   const carouselRef = useRef<HTMLDivElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const featuredVideos = [
+  const featuredVideos: FeaturedVideo[] = [
     {
       title: "AK Fields",
       subtitle: "Episode 01",
       image: "https://img.youtube.com/vi/pOStmVxCAkU/hqdefault.jpg",
-      href: "/episodes?video=pOStmVxCAkU",
+      youtubeId: "pOStmVxCAkU",
     },
     {
       title: "Imani Waters",
       subtitle: "Episode 02",
       image: "https://img.youtube.com/vi/Pp3C_fHKtMw/hqdefault.jpg",
-      href: "/episodes?video=Pp3C_fHKtMw",
+      youtubeId: "Pp3C_fHKtMw",
     },
     {
       title: "Ian Chri$t",
       subtitle: "Episode 03",
       image: "https://img.youtube.com/vi/zxgs9gi_88o/hqdefault.jpg",
-      href: "/episodes?video=zxgs9gi_88o",
+      youtubeId: "zxgs9gi_88o",
     },
     {
       title: "Nat Harriet",
       subtitle: "Episode 03",
       image: "https://img.youtube.com/vi/qqYYwg5OkC0/hqdefault.jpg",
-      href: "/episodes?video=qqYYwg5OkC0",
+      youtubeId: "qqYYwg5OkC0",
     },
     {
       title: "Khalil Da Visionary",
       subtitle: "Episode 03",
       image: "https://img.youtube.com/vi/2zn_BgkmK3Y/hqdefault.jpg",
-      href: "/episodes?video=2zn_BgkmK3Y",
+      youtubeId: "2zn_BgkmK3Y",
     },
   ];
 
@@ -81,10 +89,32 @@ export default function Home() {
     },
   ];
 
+  const activeVideo = activeIndex !== null ? featuredVideos[activeIndex] : null;
+
   const scrollCarousel = (direction: "left" | "right") => {
     if (!carouselRef.current) return;
     const amount = direction === "left" ? -340 : 340;
     carouselRef.current.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
+  const openVideo = (index: number) => {
+    setActiveIndex(index);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeVideo = () => {
+    setActiveIndex(null);
+    document.body.style.overflow = "";
+  };
+
+  const showPrevVideo = () => {
+    if (activeIndex === null) return;
+    setActiveIndex((activeIndex - 1 + featuredVideos.length) % featuredVideos.length);
+  };
+
+  const showNextVideo = () => {
+    if (activeIndex === null) return;
+    setActiveIndex((activeIndex + 1) % featuredVideos.length);
   };
 
   return (
@@ -176,11 +206,12 @@ export default function Home() {
             ref={carouselRef}
             className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            {featuredVideos.map((item) => (
-              <Link
+            {featuredVideos.map((item, index) => (
+              <button
                 key={item.title}
-                href={item.href}
-                className="group relative block h-[240px] w-[280px] snap-start flex-shrink-0 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] sm:h-[280px] sm:w-[340px]"
+                type="button"
+                onClick={() => openVideo(index)}
+                className="group relative block h-[240px] w-[280px] snap-start flex-shrink-0 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] text-left sm:h-[280px] sm:w-[340px]"
               >
                 <img
                   src={item.image}
@@ -190,7 +221,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
                 <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/70 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
-                  Watch
+                  Play
                 </div>
 
                 <div className="absolute left-5 bottom-5">
@@ -203,7 +234,7 @@ export default function Home() {
                     {item.title}
                   </h3>
                 </div>
-              </Link>
+              </button>
             ))}
           </div>
         </div>
@@ -288,6 +319,74 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      {activeVideo && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 px-3 py-4 backdrop-blur-sm sm:px-4 sm:py-8"
+          onClick={closeVideo}
+        >
+          <div
+            className="relative w-full max-w-5xl rounded-[1.5rem] border border-white/15 bg-black p-3 shadow-2xl sm:rounded-[2rem] sm:p-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mb-3 flex items-start justify-between gap-4 px-1 pt-1 sm:mb-4 sm:px-2 sm:pt-2">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-white/55 sm:text-xs">
+                  Now Playing
+                </p>
+                <h3
+                  className={`${cormorant.className} mt-2 text-2xl font-semibold sm:text-3xl`}
+                >
+                  {activeVideo.title}
+                </h3>
+                <p className="mt-1 text-xs text-white/60 sm:text-sm">
+                  {activeVideo.subtitle}
+                </p>
+              </div>
+
+              <p className="text-[10px] uppercase tracking-[0.25em] text-white/45 sm:text-xs">
+                {activeIndex! + 1} / {featuredVideos.length}
+              </p>
+            </div>
+
+            <div className="aspect-video w-full overflow-hidden rounded-[1rem] border border-white/10 sm:rounded-[1.5rem]">
+              <iframe
+                className="h-full w-full"
+                src={`https://www.youtube.com/embed/${activeVideo.youtubeId}?autoplay=1`}
+                title={activeVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+
+            <div className="mt-4 flex items-center justify-between gap-3 sm:mt-5">
+              <button
+                type="button"
+                onClick={showPrevVideo}
+                className="inline-flex flex-1 items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:border-white/30 hover:bg-white/10"
+              >
+                Prev
+              </button>
+
+              <button
+                type="button"
+                onClick={closeVideo}
+                className="inline-flex flex-1 items-center justify-center rounded-full bg-white px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-[1.01]"
+              >
+                Close
+              </button>
+
+              <button
+                type="button"
+                onClick={showNextVideo}
+                className="inline-flex flex-1 items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:border-white/30 hover:bg-white/10"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
