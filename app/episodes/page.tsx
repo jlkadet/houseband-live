@@ -25,7 +25,6 @@ type Video = {
 type Episode = {
   episodeTitle: string;
   subtitle: string;
-  coverImage: string;
   youtubeUrl: string;
   previewYoutubeId: string;
   videos: Video[];
@@ -33,9 +32,8 @@ type Episode = {
 
 const episodes: Episode[] = [
   {
-    episodeTitle: "Episode 01 — Debut Sessions",
-    subtitle: "Houseband/Live",
-    coverImage: "/grouppic.png",
+    episodeTitle: "Episode 01",
+    subtitle: "AK Fields",
     youtubeUrl: "https://www.youtube.com/watch?v=pOStmVxCAkU",
     previewYoutubeId: "pOStmVxCAkU",
     videos: [
@@ -46,9 +44,8 @@ const episodes: Episode[] = [
     ],
   },
   {
-    episodeTitle: "Episode 02 — Featuring Imani Waters",
-    subtitle: "Houseband/Live",
-    coverImage: "/imaniwaters.png",
+    episodeTitle: "Episode 02",
+    subtitle: "Imani Waters",
     youtubeUrl: "https://www.youtube.com/watch?v=Pp3C_fHKtMw",
     previewYoutubeId: "Pp3C_fHKtMw",
     videos: [
@@ -59,9 +56,8 @@ const episodes: Episode[] = [
     ],
   },
   {
-    episodeTitle: "Episode 03 — Live Collective",
-    subtitle: "Houseband/Live",
-    coverImage: "/IanChrist.png",
+    episodeTitle: "Episode 03",
+    subtitle: "Live Collective",
     youtubeUrl: "https://www.youtube.com/watch?v=zxgs9gi_88o",
     previewYoutubeId: "zxgs9gi_88o",
     videos: [
@@ -91,6 +87,7 @@ export default function EpisodesPage() {
         episode.videos.map((video) => ({
           ...video,
           episodeTitle: episode.episodeTitle,
+          episodeSubtitle: episode.subtitle,
         }))
       ),
     []
@@ -98,23 +95,23 @@ export default function EpisodesPage() {
 
   const activeVideo = activeIndex !== null ? allVideos[activeIndex] : null;
 
-  const openVideo = (youtubeId: string) => {
+  const setVideoById = (youtubeId: string) => {
     const foundIndex = allVideos.findIndex((video) => video.youtubeId === youtubeId);
     if (foundIndex !== -1) {
       setActiveIndex(foundIndex);
     }
   };
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const videoId = params.get("video");
-    if (!videoId) return;
+  const openVideo = (youtubeId: string) => {
+    const foundIndex = allVideos.findIndex((video) => video.youtubeId === youtubeId);
+    if (foundIndex === -1) return;
 
-    const foundIndex = allVideos.findIndex((video) => video.youtubeId === videoId);
-    if (foundIndex !== -1) {
-      setActiveIndex(foundIndex);
-    }
-  }, [allVideos]);
+    setActiveIndex(foundIndex);
+
+    const url = new URL(window.location.href);
+    url.searchParams.set("video", youtubeId);
+    window.history.replaceState({}, "", url.pathname + url.search);
+  };
 
   const closeVideo = () => {
     setActiveIndex(null);
@@ -126,13 +123,55 @@ export default function EpisodesPage() {
 
   const showPrevVideo = () => {
     if (activeIndex === null) return;
-    setActiveIndex((activeIndex - 1 + allVideos.length) % allVideos.length);
+    const nextIndex = (activeIndex - 1 + allVideos.length) % allVideos.length;
+    const nextVideo = allVideos[nextIndex];
+    setActiveIndex(nextIndex);
+
+    const url = new URL(window.location.href);
+    url.searchParams.set("video", nextVideo.youtubeId);
+    window.history.replaceState({}, "", url.pathname + url.search);
   };
 
   const showNextVideo = () => {
     if (activeIndex === null) return;
-    setActiveIndex((activeIndex + 1) % allVideos.length);
+    const nextIndex = (activeIndex + 1) % allVideos.length;
+    const nextVideo = allVideos[nextIndex];
+    setActiveIndex(nextIndex);
+
+    const url = new URL(window.location.href);
+    url.searchParams.set("video", nextVideo.youtubeId);
+    window.history.replaceState({}, "", url.pathname + url.search);
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const videoId = params.get("video");
+    if (!videoId) return;
+    setVideoById(videoId);
+  }, [allVideos]);
+
+  useEffect(() => {
+    if (activeIndex === null) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeVideo();
+      if (e.key === "ArrowLeft") showPrevVideo();
+      if (e.key === "ArrowRight") showNextVideo();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeIndex]);
+
+  useEffect(() => {
+    if (activeIndex !== null) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [activeIndex]);
 
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
@@ -140,16 +179,15 @@ export default function EpisodesPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 sm:mb-12">
             <p className="text-sm uppercase tracking-[0.3em] text-white/55">
-              Previous Episodes
+              Episodes
             </p>
             <h1
               className={`${bungee.className} mt-3 text-3xl tracking-wide sm:text-4xl md:text-6xl`}
             >
-              Watch the Archive
+              Archive
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-white/75">
-              Explore past Houseband/Live sessions and experience the sound,
-              visuals, and collaborative energy behind each performance.
+            <p className="mt-5 max-w-2xl text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
+              Live sessions from Houseband/Live.
             </p>
           </div>
 
@@ -160,10 +198,12 @@ export default function EpisodesPage() {
                 className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8"
               >
                 <div className="mb-6 grid gap-6 sm:mb-8 sm:gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-center">
-                  <div
-                    className="group relative overflow-hidden rounded-[1.5rem] border border-white/10"
+                  <button
+                    type="button"
+                    onClick={() => openVideo(episode.previewYoutubeId)}
                     onMouseEnter={() => setHoveredEpisode(episode.episodeTitle)}
                     onMouseLeave={() => setHoveredEpisode(null)}
+                    className="group relative overflow-hidden rounded-[1.5rem] border border-white/10 text-left"
                   >
                     <img
                       src={`https://img.youtube.com/vi/${episode.previewYoutubeId}/hqdefault.jpg`}
@@ -184,14 +224,27 @@ export default function EpisodesPage() {
                       </div>
                     )}
 
-                    <div className="pointer-events-none absolute left-4 top-4 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
-                      Hover to Preview
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+                    <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
+                      Play
                     </div>
-                  </div>
+
+                    <div className="absolute left-5 bottom-5">
+                      <p className="text-[10px] uppercase tracking-[0.25em] text-white/60">
+                        {episode.episodeTitle}
+                      </p>
+                      <h3
+                        className={`${cormorant.className} mt-2 text-3xl font-semibold text-white`}
+                      >
+                        {episode.subtitle}
+                      </h3>
+                    </div>
+                  </button>
 
                   <div>
                     <p className="text-xs uppercase tracking-[0.3em] text-white/55">
-                      {episode.subtitle}
+                      Houseband/Live
                     </p>
                     <h2
                       className={`${cormorant.className} mt-2 text-4xl font-semibold`}
@@ -199,18 +252,27 @@ export default function EpisodesPage() {
                       {episode.episodeTitle}
                     </h2>
                     <p className="mt-4 max-w-xl text-white/70">
-                      A curated collection of live performances captured through the
-                      Houseband/Live format.
+                      {episode.subtitle}
                     </p>
 
-                    <a
-                      href={episode.youtubeUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-6 inline-block rounded-full border border-white/20 bg-white px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
-                    >
-                      Watch Full Session
-                    </a>
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      <button
+                        type="button"
+                        onClick={() => openVideo(episode.previewYoutubeId)}
+                        className="inline-block rounded-full bg-white px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
+                      >
+                        Watch Here
+                      </button>
+
+                      <a
+                        href={episode.youtubeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block rounded-full border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-white/10"
+                      >
+                        YouTube
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -235,14 +297,11 @@ export default function EpisodesPage() {
                               <div className="ml-1 h-0 w-0 border-b-[10px] border-l-[16px] border-t-[10px] border-b-transparent border-l-white border-t-transparent" />
                             </div>
                           </div>
-                          <div className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/80">
-                            Watch Now
-                          </div>
                         </div>
 
                         <div className="p-5">
                           <p className="text-xs uppercase tracking-[0.25em] text-white/55">
-                            Live Session
+                            Session
                           </p>
                           <h3
                             className={`${cormorant.className} mt-2 text-2xl font-semibold`}
@@ -269,17 +328,23 @@ export default function EpisodesPage() {
             className="relative w-full max-w-5xl rounded-[1.5rem] border border-white/15 bg-black p-3 shadow-2xl sm:rounded-[2rem] sm:p-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-3 px-1 pt-1 sm:mb-4 sm:px-2 sm:pt-2">
-              <p className="text-[10px] uppercase tracking-[0.25em] text-white/55 sm:text-xs">
-                Now Playing
-              </p>
-              <h3
-                className={`${cormorant.className} mt-2 text-2xl font-semibold sm:text-3xl`}
-              >
-                {activeVideo.title}
-              </h3>
-              <p className="mt-1 text-xs text-white/60 sm:text-sm">
-                {activeVideo.episodeTitle}
+            <div className="mb-3 flex items-start justify-between gap-4 px-1 pt-1 sm:mb-4 sm:px-2 sm:pt-2">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-white/55 sm:text-xs">
+                  Now Playing
+                </p>
+                <h3
+                  className={`${cormorant.className} mt-2 text-2xl font-semibold sm:text-3xl`}
+                >
+                  {activeVideo.title}
+                </h3>
+                <p className="mt-1 text-xs text-white/60 sm:text-sm">
+                  {activeVideo.episodeTitle}
+                </p>
+              </div>
+
+              <p className="text-[10px] uppercase tracking-[0.25em] text-white/45 sm:text-xs">
+                {activeIndex! + 1} / {allVideos.length}
               </p>
             </div>
 
