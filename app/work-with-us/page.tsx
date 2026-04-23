@@ -151,9 +151,21 @@ export default function WorkWithUsPage() {
           </p>
 
           <section
-            id="apply-form"
-            className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8"
-          >
+  id="apply-form"
+  className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]"
+>
+  <div className="col-span-full flex items-center gap-3 mb-4">
+    <div className="h-[1px] flex-1 bg-white/10" />
+    <p className="text-xs uppercase tracking-[0.25em] text-[#f2d3a2]/70">
+      Drop your music — we’ll build the session around it
+    </p>
+    <div className="h-[1px] flex-1 bg-white/10" />
+  </div>
+            <p className="col-span-full mb-4 text-sm text-[#f2d3a2]/70">
+
+    ↓ Drop your music below — we’ll build the session around it
+
+  </p>
             <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-6 sm:p-8">
               <p className="text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]/70">
                 Apply
@@ -188,8 +200,9 @@ export default function WorkWithUsPage() {
 
               <form onSubmit={handleSubmit} className="grid gap-5">
                 <input
-                  type="text"
-                  name="artistName"
+  type="text"
+  name="artistName"
+  autoFocus
                   placeholder="Artist Name"
                   value={formData.artistName}
                   onChange={handleChange}

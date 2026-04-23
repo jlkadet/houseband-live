@@ -61,11 +61,11 @@ export default function SiteHeader() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="/work-with-us"
-            className="hidden rounded-full border border-white/20 bg-white px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105 md:inline-flex"
-          >
-            Apply
-          </Link>
+  href="/work-with-us#apply-form"
+  className="hidden rounded-full border border-white/20 bg-white px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105 md:inline-flex"
+>
+  Apply
+</Link>
 
           <button
             type="button"
@@ -114,12 +114,12 @@ export default function SiteHeader() {
             ))}
 
             <Link
-              href="/work-with-us"
-              onClick={() => setMenuOpen(false)}
-              className="mt-2 inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black"
-            >
-              Apply
-            </Link>
+  href="/work-with-us#apply-form"
+  onClick={() => setMenuOpen(false)}
+  className="mt-2 inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black"
+>
+  Apply
+</Link>
           </nav>
         </div>
       )}

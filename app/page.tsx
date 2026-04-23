@@ -231,7 +231,7 @@ export default function Home() {
 
             <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
               <Link
-                href="/work-with-us"
+                href="/work-with-us#apply-form"
                 className="inline-flex items-center justify-center rounded-full bg-[#f2d3a2] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
               >
                 Apply
@@ -385,7 +385,7 @@ export default function Home() {
           </p>
 
           <Link
-            href="/work-with-us"
+            href="/work-with-us#apply-form"
             className="mt-8 inline-flex items-center justify-center rounded-full bg-[#f2d3a2] px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
           >
             Apply
