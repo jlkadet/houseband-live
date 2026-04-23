@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Bungee, Cormorant_Garamond, Inter } from "next/font/google";
 
@@ -21,7 +20,8 @@ const inter = Inter({
 export default function WorkWithUsPage() {
   const [formData, setFormData] = useState({
     artistName: "",
-    links: "",
+    musicLinks: "",
+    socials: "",
     email: "",
     message: "",
   });
@@ -29,31 +29,6 @@ export default function WorkWithUsPage() {
   const [status, setStatus] = useState<
     "idle" | "submitting" | "success" | "error"
   >("idle");
-
-  const packages = [
-    {
-      name: "Live Session",
-      price: "$---",
-      description:
-        "A focused live session built for artists who want strong performance-driven visuals and a polished final piece.",
-      features: [
-        "Live performance capture",
-        "Houseband/Live collaboration",
-        "Edited session deliverable",
-      ],
-    },
-    {
-      name: "Featured Session",
-      price: "$---",
-      description:
-        "A deeper creative package for artists who want a more involved session experience, stronger production support, and a more developed rollout.",
-      features: [
-        "Everything in Live Session",
-        "Expanded production support",
-        "Creative rollout guidance",
-      ],
-    },
-  ];
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -86,7 +61,8 @@ export default function WorkWithUsPage() {
         setStatus("success");
         setFormData({
           artistName: "",
-          links: "",
+          musicLinks: "",
+          socials: "",
           email: "",
           message: "",
         });
@@ -100,112 +76,114 @@ export default function WorkWithUsPage() {
 
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
-      <main className="px-4 py-10 sm:px-6 sm:py-12 lg:px-10">
+      <main className="px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-16 max-w-4xl">
-            <p className="text-sm uppercase tracking-[0.3em] text-white/55">
+          <div className="mb-8 sm:mb-10">
+            <p className="text-sm uppercase tracking-[0.3em] text-[#f2d3a2]/70">
               Work With Us
             </p>
+
             <h1
-  className={`${bungee.className} mt-3 text-3xl tracking-wide sm:text-4xl md:text-6xl`}
->
-              Book a Session
+              className={`${bungee.className} mt-3 text-3xl tracking-wide sm:text-4xl md:text-6xl`}
+            >
+              Be in the next session.
             </h1>
-            <p className="mt-6 text-lg leading-8 text-white/75">
-              We're always looking for artists to collaborate with. 
-            </p>
+
+            <div className="mt-5 max-w-3xl">
+              <p className="text-base leading-7 text-white/75 sm:text-lg sm:leading-8">
+                House/Band is a live session series built around artist
+                collaboration. We pair artists with the right musicians,
+                rehearse live arrangements of original music, and film sessions
+                that are edited and released by Houseband/Live.
+              </p>
+
+              <a
+                href="#apply-form"
+                className="mt-6 inline-flex items-center justify-center rounded-full bg-[#f2d3a2] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105"
+              >
+                Apply Now
+              </a>
+            </div>
           </div>
 
-          <section className="grid gap-4 sm:gap-6 lg:grid-cols-2">
-            {packages.map((pkg) => (
-              <div
-                key={pkg.name}
-                className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h2 className={`${cormorant.className} text-3xl font-semibold`}>
-                      {pkg.name}
-                    </h2>
-                    <p className="mt-3 max-w-xl text-white/70">
-                      {pkg.description}
-                    </p>
-                  </div>
-
-                  <div className="text-right">
-                    <p className="text-xs uppercase tracking-[0.25em] text-white/50">
-                      Starting at
-                    </p>
-                    <p className={`${bungee.className} mt-2 text-3xl text-white`}>
-                      {pkg.price}
-                    </p>
-                  </div>
-                </div>
-
-                <ul className="mt-8 space-y-3 text-white/80">
-                  {pkg.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="rounded-full border border-white/10 px-4 py-3"
-                    >
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </section>
-
-          <section className="mt-8 grid gap-5 sm:mt-10 sm:gap-8 lg:grid-cols-[1fr_1fr] lg:items-start">
-            <div className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8">
-              <p className="text-sm uppercase tracking-[0.3em] text-white/55">
-                What Artists Get
+          <section className="mb-8 grid gap-4 lg:grid-cols-[1fr_1fr] lg:gap-6 sm:mb-10">
+            <div className="rounded-[1.5rem] border border-[#d8a25e]/20 bg-white/[0.04] p-6 sm:p-8">
+              <p className="text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]/70">
+                What this is
               </p>
-              <ul className="mt-6 space-y-4 text-white/80">
-                <li>A session built around live performance and visual impact</li>
-                <li>Collaboration with the Houseband/Live roster</li>
-                <li>Creative support shaped around the artist’s sound and goals</li>
-                <li>Final content that feels polished, intentional, and release-ready</li>
+
+              <h2
+                className={`${cormorant.className} mt-3 text-3xl font-semibold sm:text-4xl`}
+              >
+                More than a filmed performance
+              </h2>
+
+              <p className="mt-4 leading-7 text-white/75">
+                We do not just film a song as-is. We build the right band around
+                it, rehearse it with the artist, and create a session that feels
+                collaborative, musical, and worth releasing.
+              </p>
+            </div>
+
+            <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-6 sm:p-8">
+              <p className="text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]/70">
+                Good fit
+              </p>
+
+              <h2
+                className={`${cormorant.className} mt-3 text-3xl font-semibold sm:text-4xl`}
+              >
+                Who this is for
+              </h2>
+
+              <ul className="mt-4 space-y-3 leading-7 text-white/75">
+                <li>Artists with original music they want to perform live</li>
+                <li>Artists open to collaboration and arrangement development</li>
+                <li>Artists who want a filmed session with strong musicianship</li>
+                <li>Artists interested in a polished edited release</li>
               </ul>
             </div>
-
-            <div className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-xl sm:p-8">
-              <p className="text-sm uppercase tracking-[0.3em] text-white/55">
-                How It Works
-              </p>
-              <ol className="mt-6 space-y-4 text-white/80">
-                <li>1. Submit your information and session interest</li>
-                <li>2. We review your sound, links, and creative direction</li>
-                <li>3. We follow up with next steps, availability, and fit</li>
-                <li>4. We build the session together</li>
-              </ol>
-            </div>
           </section>
 
-          <section className="mt-10 grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-white/55">
+          <p className="mb-6 max-w-2xl text-sm leading-6 text-white/60 sm:text-base sm:leading-7">
+            If it feels like a fit, send us your music and tell us what kind of
+            session you want to build.
+          </p>
+
+          <section
+            id="apply-form"
+            className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8"
+          >
+            <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-6 sm:p-8">
+              <p className="text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]/70">
                 Apply
               </p>
+
               <h2
-                className={`${bungee.className} mt-3 text-3xl tracking-wide md:text-5xl`}
+                className={`${cormorant.className} mt-3 text-3xl font-semibold sm:text-4xl`}
               >
-                Apply to Perform
+                Send us your music
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-white/75">
-                Tell us about your sound, your vision, and the kind of session
-                you want to create. We’re looking for artists who care about the
-                performance and the presentation around it.
+
+              <p className="mt-4 leading-7 text-white/75">
+                Tell us about your sound, share your music, and give us a sense
+                of what you would want the session to feel like.
+              </p>
+
+              <p className="mt-4 text-sm leading-6 text-white/55">
+                We are especially looking for artists with original music and a
+                real interest in collaborating with a live band.
               </p>
             </div>
 
-            <div className="retro-card-frame rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-2xl sm:p-8">
-              <div className="mb-3 text-[10px] uppercase tracking-[0.35em] text-white/60">
+            <div className="rounded-[1.5rem] border border-[#d8a25e]/20 bg-white/[0.04] p-6 sm:rounded-[1.75rem] sm:p-8">
+              <div className="mb-3 text-[10px] uppercase tracking-[0.35em] text-[#f2d3a2]/70">
                 Artist Intake Form
               </div>
 
               <p className="mb-5 text-sm text-white/60">
-                If you're interested in performing a session, send us your info and we'll be in touch. 
+                Send your music, your socials, and a little bit about the kind
+                of session you want to build with House/Band.
               </p>
 
               <form onSubmit={handleSubmit} className="grid gap-5">
@@ -216,16 +194,31 @@ export default function WorkWithUsPage() {
                   value={formData.artistName}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-base text-white placeholder:text-white/35 outline-none transition focus:border-white/30"
+                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-base text-white placeholder:text-white/35 outline-none transition focus:border-[#d8a25e]/35"
                 />
+
+                <div>
+                  <input
+                    type="text"
+                    name="musicLinks"
+                    placeholder="Spotify / SoundCloud / YouTube / Drive link"
+                    value={formData.musicLinks}
+                    onChange={handleChange}
+                    required
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-base text-white placeholder:text-white/35 outline-none transition focus:border-[#d8a25e]/35"
+                  />
+                  <p className="mt-2 text-xs leading-5 text-white/45">
+                    Send 1–3 songs or demos that best represent your sound.
+                  </p>
+                </div>
 
                 <input
                   type="text"
-                  name="links"
-                  placeholder="Instagram / Spotify / Website"
-                  value={formData.links}
+                  name="socials"
+                  placeholder="Instagram / Website (optional)"
+                  value={formData.socials}
                   onChange={handleChange}
-                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-base text-white placeholder:text-white/35 outline-none transition focus:border-white/30"
+                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-base text-white placeholder:text-white/35 outline-none transition focus:border-[#d8a25e]/35"
                 />
 
                 <input
@@ -235,31 +228,31 @@ export default function WorkWithUsPage() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-2xl border borderwhite/10 bg-white/5 px-5 py-4 text-base text-white placeholder:text-white/35 outline-none transition focus:border-white/30"
+                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-base text-white placeholder:text-white/35 outline-none transition focus:border-[#d8a25e]/35"
                 />
 
                 <textarea
                   name="message"
-                  placeholder="Tell us about your music, your goals, and the kind of session you're looking for"
+                  placeholder="Tell us about your sound, what songs you’d want to do, and how you imagine the session feeling"
                   rows={6}
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-base text-white placeholder:text-white/35 outline-none transition focus:border-white/30"
+                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-base text-white placeholder:text-white/35 outline-none transition focus:border-[#d8a25e]/35"
                 />
 
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="mt-2 inline-flex w-fit items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="mt-2 inline-flex w-fit items-center justify-center rounded-full bg-[#f2d3a2] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:scale-105 disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {status === "submitting" ? "Submitting..." : "Submit Application"}
+                  {status === "submitting" ? "Submitting..." : "Apply"}
                 </button>
               </form>
 
               {status === "success" && (
                 <p className="mt-4 rounded-2xl border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-300">
-                  Thanks! Your inquiry was submitted successfully. We’ll be in touch soon.
+                  Submission received. If it feels like a fit, we’ll be in touch.
                 </p>
               )}
 
