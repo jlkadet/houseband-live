@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en" className="bg-black">
       <body className="bg-black text-white">
         <SiteHeader />
-        <main className="bg-black pt-20 sm:pt-24">{children}</main>
+        <main className="bg-black pt-[4.5rem] sm:pt-24">{children}</main>
       </body>
     </html>
   );

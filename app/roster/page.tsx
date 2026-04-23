@@ -73,11 +73,11 @@ export default function RosterPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {members.map((member, index) => (
               <div
                 key={member.name}
-                className={`group relative overflow-hidden rounded-[1.35rem] border bg-white/[0.04] p-5 transition duration-300 hover:-rotate-[1deg] hover:scale-[1.02] sm:rounded-[1.5rem] sm:p-6 ${
+                className={`group relative overflow-hidden rounded-[1.15rem] border bg-white/[0.04] p-4 transition duration-300 hover:-rotate-[1deg] hover:scale-[1.02] sm:rounded-[1.5rem] sm:p-6 ${
                   index % 2 === 0
                     ? "border-[#d8a25e]/20"
                     : "border-white/10"

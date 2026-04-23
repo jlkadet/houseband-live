@@ -103,3 +103,18 @@ html {
 #apply-form {
   scroll-margin-top: 100px;
 }
+
+input,
+textarea,
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+video {
+  max-width: 100%;
+}
+
+body {
+  overscroll-behavior-y: none;
+}

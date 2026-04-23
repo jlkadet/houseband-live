@@ -198,14 +198,14 @@ export default function Home() {
 
         <div className="absolute right-6 top-32 hidden h-20 w-20 rounded-full border border-[#d8a25e]/20 bg-[#d8a25e]/10 blur-2xl md:block" />
 
-        <div className="relative z-10 mx-auto flex min-h-[70svh] w-full max-w-7xl flex-col justify-end animate-[fadeIn_1s_ease-out] sm:min-h-[74svh]">
+        <div className="relative z-10 mx-auto flex min-h-[62svh] w-full max-w-7xl flex-col justify-end animate-[fadeIn_1s_ease-out] sm:min-h-[74svh]">
           <div className="max-w-4xl">
             <p className="mb-3 text-[11px] uppercase tracking-[0.28em] text-[#f2d3a2]/80 sm:mb-4 sm:text-sm sm:tracking-[0.45em]">
               Minneapolis Live Session Collective
             </p>
 
             <h1
-              className={`${bungee.className} text-4xl leading-[0.9] tracking-tight sm:text-6xl md:text-7xl lg:text-[7.5rem]`}
+              className={`${bungee.className} text-[2.6rem] leading-[0.9] tracking-tight sm:text-6xl md:text-7xl lg:text-[7.5rem]`}
             >
               HOUSEBAND/
               <span className="block text-white">LIVE</span>
@@ -291,7 +291,7 @@ export default function Home() {
                 key={item.title}
                 type="button"
                 onClick={() => openVideo(index)}
-                className="group relative block h-[220px] w-[250px] snap-start flex-shrink-0 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] text-left transition duration-300 hover:-rotate-[1deg] hover:scale-[1.04] hover:z-10 sm:h-[300px] sm:w-[380px] sm:rounded-[1.75rem]"
+                className="group relative block h-[200px] w-[230px] snap-start flex-shrink-0 overflow-hidden rounded-[1.35rem] border border-white/10 bg-white/[0.04] text-left transition duration-300 hover:-rotate-[1deg] hover:scale-[1.04] hover:z-10 sm:h-[300px] sm:w-[380px] sm:rounded-[1.75rem]"
               >
                 <img
                   src={item.image}
@@ -314,7 +314,7 @@ export default function Home() {
                     {item.subtitle}
                   </p>
                   <h3
-                    className={`${cormorant.className} mt-2 text-3xl font-semibold text-white sm:text-4xl`}
+                    className={`${cormorant.className} mt-2 text-[2rem] font-semibold text-white sm:text-4xl`}
                   >
                     {item.title}
                   </h3>
@@ -336,14 +336,14 @@ export default function Home() {
               <Link
                 key={item.title}
                 href={item.href}
-                className={`group relative block w-[250px] snap-start flex-shrink-0 overflow-hidden rounded-[1.35rem] border bg-white/[0.04] sm:w-auto sm:rounded-[1.5rem] ${
+                className={`group relative block w-[220px] snap-start flex-shrink-0 overflow-hidden rounded-[1.2rem] border bg-white/[0.04] sm:w-auto sm:rounded-[1.5rem] ${
                   idx % 2 === 0 ? "border-[#d8a25e]/20" : "border-white/10"
                 }`}
               >
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="h-[180px] w-full object-cover transition duration-500 group-hover:scale-105 group-hover:opacity-90 sm:h-[220px]"
+                  className="h-[160px] w-full object-cover transition duration-500 group-hover:scale-105 group-hover:opacity-90 sm:h-[220px]"
                 />
                 <div className="absolute inset-0 bg-black/25" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
@@ -395,11 +395,11 @@ export default function Home() {
 
       {activeVideo && (
         <div
-          className="fixed inset-0 z-[100] flex items-end justify-center bg-black/90 px-3 py-3 backdrop-blur-md sm:items-center sm:px-4 sm:py-8"
+          className="fixed inset-0 z-[100] flex items-end justify-center bg-black/90 px-2 py-2 backdrop-blur-md sm:items-center sm:px-4 sm:py-8"
           onClick={closeVideo}
         >
           <div
-            className="relative w-full max-w-5xl rounded-[1.35rem] border border-[#d8a25e]/20 bg-[#050505] p-3 shadow-2xl sm:rounded-[2rem] sm:p-4"
+            className="relative w-full max-w-5xl rounded-[1.15rem] border border-[#d8a25e]/20 bg-[#050505] p-2.5 shadow-2xl sm:rounded-[2rem] sm:p-4"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-3 flex items-start justify-between gap-4 border-b border-white/10 px-1 pb-3 pt-1 sm:mb-4 sm:px-2 sm:pb-4 sm:pt-2">
