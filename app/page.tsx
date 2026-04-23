@@ -167,19 +167,18 @@ export default function Home() {
         <div className="absolute inset-0 overflow-hidden">
           <video
             ref={heroVideoRef}
-            className="h-full w-full object-cover scale-105 animate-[zoom_20s_linear_infinite]"
+            className="h-full w-full object-cover scale-105 animate-[zoom_20s_linear_infinite] brightness-75"
             autoPlay
             loop
             muted
             playsInline
             preload="metadata"
-            poster="/grouppic.png"
           >
             <source src="/hero-loop.mp4" type="video/mp4" />
           </video>
         </div>
 
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/30" />
         <div className="absolute inset-0 backdrop-blur-[2px]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_22%,rgba(0,0,0,0.86)_100%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-transparent" />
@@ -190,7 +189,7 @@ export default function Home() {
           className="absolute right-4 top-20 z-20 inline-flex items-center justify-center rounded-full border border-[#d8a25e]/30 bg-[#120d0b]/80 px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-[#f2d3a2] backdrop-blur-sm transition hover:bg-[#120d0b] sm:right-6 sm:top-24"
           aria-label={isHeroMuted ? "Unmute background video" : "Mute background video"}
         >
-          {isHeroMuted ? "Sound Off" : "Sound On"}
+          {isHeroMuted ? "🔇 Sound" : "🔊 Sound"}
         </button>
 
         <div className="absolute left-4 top-20 hidden rounded-full border border-[#d8a25e]/40 bg-[#d8a25e]/10 px-4 py-2 text-[10px] uppercase tracking-[0.3em] text-[#f2d3a2] md:block">
@@ -199,7 +198,7 @@ export default function Home() {
 
         <div className="absolute right-6 top-32 hidden h-20 w-20 rounded-full border border-[#d8a25e]/20 bg-[#d8a25e]/10 blur-2xl md:block" />
 
-        <div className="relative z-10 mx-auto flex min-h-[70svh] w-full max-w-7xl flex-col justify-end sm:min-h-[74svh]">
+        <div className="relative z-10 mx-auto flex min-h-[70svh] w-full max-w-7xl flex-col justify-end animate-[fadeIn_1s_ease-out] sm:min-h-[74svh]">
           <div className="max-w-4xl">
             <p className="mb-3 text-[11px] uppercase tracking-[0.28em] text-[#f2d3a2]/80 sm:mb-4 sm:text-sm sm:tracking-[0.45em]">
               Minneapolis Live Session Collective
@@ -216,9 +215,19 @@ export default function Home() {
               Now Booking — Minneapolis, MN
             </div>
 
-            <p className="mt-5 max-w-md text-base leading-7 text-white/80 sm:mt-6 sm:max-w-lg sm:text-xl">
-              Raw sessions. Real artists.
-            </p>
+            <div className="mt-5 sm:mt-6">
+              <p className="max-w-md text-base leading-7 text-white/80 sm:max-w-lg sm:text-xl">
+                Raw sessions. Real artists.
+              </p>
+
+              <button
+                type="button"
+                onClick={toggleHeroMute}
+                className="mt-3 inline-flex items-center justify-center rounded-full border border-[#d8a25e]/25 bg-[#120d0b]/70 px-4 py-2 text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2] transition hover:bg-[#120d0b] active:scale-95 sm:text-xs"
+              >
+                {isHeroMuted ? "Tap for Sound" : "Sound On"}
+              </button>
+            </div>
 
             <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
               <Link
@@ -232,7 +241,7 @@ export default function Home() {
                 href="/episodes"
                 className="inline-flex items-center justify-center rounded-full border border-white/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-white/10"
               >
-                Archive
+                Watch Live Sessions
               </Link>
             </div>
           </div>
@@ -275,14 +284,14 @@ export default function Home() {
 
           <div
             ref={carouselRef}
-            className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0"
+            className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0"
           >
             {featuredVideos.map((item, index) => (
               <button
                 key={item.title}
                 type="button"
                 onClick={() => openVideo(index)}
-                className="group relative block h-[220px] w-[250px] snap-start flex-shrink-0 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] text-left transition hover:-rotate-[1deg] hover:scale-[1.01] sm:h-[300px] sm:w-[380px] sm:rounded-[1.75rem]"
+                className="group relative block h-[220px] w-[250px] snap-start flex-shrink-0 overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.04] text-left transition duration-300 hover:-rotate-[1deg] hover:scale-[1.04] hover:z-10 sm:h-[300px] sm:w-[380px] sm:rounded-[1.75rem]"
               >
                 <img
                   src={item.image}
@@ -290,6 +299,7 @@ export default function Home() {
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.05]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
+                <div className="absolute inset-0 opacity-0 transition group-hover:opacity-100 bg-white/5" />
 
                 <div className="absolute left-3 top-3 rounded-full border border-[#d8a25e]/30 bg-[#120d0b]/75 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2] sm:left-4 sm:top-4">
                   Play
@@ -321,12 +331,12 @@ export default function Home() {
             Explore
           </p>
 
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {pageGallery.map((item, idx) => (
+          <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 xl:grid-cols-4">
+  {pageGallery.map((item, idx) => (
               <Link
                 key={item.title}
                 href={item.href}
-                className={`group relative block overflow-hidden rounded-[1.35rem] border bg-white/[0.04] sm:rounded-[1.5rem] ${
+                className={`group relative block w-[250px] snap-start flex-shrink-0 overflow-hidden rounded-[1.35rem] border bg-white/[0.04] sm:w-auto sm:rounded-[1.5rem] ${
                   idx % 2 === 0 ? "border-[#d8a25e]/20" : "border-white/10"
                 }`}
               >
@@ -454,7 +464,7 @@ export default function Home() {
                 onClick={closeVideo}
                 className="text-xs uppercase tracking-[0.22em] text-white/55 transition hover:text-[#f2d3a2]"
               >
-                Go to full archive
+                View all sessions
               </Link>
             </div>
           </div>
