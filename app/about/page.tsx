@@ -17,11 +17,38 @@ const inter = Inter({
 });
 
 export default function AboutPage() {
+  const processSteps = [
+    {
+      number: "01",
+      title: "Start with the artist",
+      description:
+        "Every session begins with the artist and their original music.",
+    },
+    {
+      number: "02",
+      title: "Build the right band",
+      description:
+        "We bring together the musicians that best fit the artist’s sound and songs.",
+    },
+    {
+      number: "03",
+      title: "Rehearse and shape it",
+      description:
+        "The band listens, collaborates, and develops a live arrangement with the artist’s guidance.",
+    },
+    {
+      number: "04",
+      title: "Film and release",
+      description:
+        "Once the session is ready, it is filmed, edited, and released by Houseband/Live.",
+    },
+  ];
+
   return (
     <div className={`${inter.className} min-h-screen bg-black text-white`}>
-      <main className="px-4 py-10 sm:px-6 sm:py-12 lg:px-10">
+      <main className="px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-10 sm:mb-12">
+          <div className="mb-8 sm:mb-10">
             <p className="text-sm uppercase tracking-[0.3em] text-[#f2d3a2]/70">
               About
             </p>
@@ -39,7 +66,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <section className="mb-8 grid gap-6 lg:grid-cols-[1fr_1fr] lg:gap-8 sm:mb-10">
+          <section className="mb-8 grid gap-4 lg:grid-cols-[1fr_1fr] lg:gap-6 sm:mb-10">
             <div className="rounded-[1.5rem] border border-[#d8a25e]/20 bg-white/[0.04] p-6 sm:p-8">
               <p className="text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]/70">
                 The idea
@@ -51,88 +78,87 @@ export default function AboutPage() {
                 Collaboration comes first
               </h2>
 
-              <p className="mt-4 text-white/75 leading-7">
-                The goal is not just to film an artist performing alone. House/Band
-                is built around pairing artists with the right musicians and
-                creating a live version of their music that feels collaborative,
-                intentional, and worth capturing on camera.
+              <p className="mt-4 leading-7 text-white/75">
+                House/Band is not just about filming a performance. It is about
+                pairing artists with the right musicians and building a live
+                version of the music that feels collaborative, musical, and true
+                to the artist.
               </p>
             </div>
 
             <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-6 sm:p-8">
               <p className="text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]/70">
-                The process
+                Why it works
               </p>
 
               <h2
                 className={`${cormorant.className} mt-3 text-3xl font-semibold sm:text-4xl`}
               >
-                From song to session
+                Built around real process
               </h2>
 
-              <p className="mt-4 text-white/75 leading-7">
-                We find the musicians that make sense for the artist’s music,
-                bring them together with the artist, and develop the live
-                arrangement through rehearsal. From there, the session is filmed,
-                edited, and released by Houseband/Live.
+              <p className="mt-4 leading-7 text-white/75">
+                The sessions are shaped through listening, rehearsal, and artist
+                guidance before the cameras roll. That process is what makes the
+                final filmed session feel alive and intentional instead of just
+                captured.
               </p>
             </div>
           </section>
 
-          <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {[
-              {
-                number: "01",
-                title: "Find the fit",
-                description:
-                  "We think carefully about which musicians match the artist’s music.",
-              },
-              {
-                number: "02",
-                title: "Build the arrangement",
-                description:
-                  "The band listens, collaborates, and creates their own approach with the artist’s guidance.",
-              },
-              {
-                number: "03",
-                title: "Rehearse it live",
-                description:
-                  "The songs are shaped in rehearsal before the cameras ever turn on.",
-              },
-              {
-                number: "04",
-                title: "Film and release",
-                description:
-                  "The final session is captured on camera, edited, and released through Houseband/Live.",
-              },
-            ].map((item, index) => (
-              <div
-                key={item.number}
-                className={`group relative overflow-hidden rounded-[1.35rem] border bg-white/[0.04] p-5 transition duration-300 hover:-rotate-[1deg] hover:scale-[1.02] sm:rounded-[1.5rem] sm:p-6 ${
-                  index % 2 === 0
-                    ? "border-[#d8a25e]/20"
-                    : "border-white/10"
-                }`}
-              >
-                <div className="absolute inset-0 opacity-0 transition group-hover:opacity-100 bg-white/5" />
+          <section className="mb-8 sm:mb-10">
+            <p className="text-sm uppercase tracking-[0.3em] text-[#f2d3a2]/70">
+              Process
+            </p>
 
-                <div className="relative">
-                  <p className="text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]/70">
-                    {item.number}
-                  </p>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {processSteps.map((step, index) => (
+                <div
+                  key={step.number}
+                  className={`group relative overflow-hidden rounded-[1.35rem] border bg-white/[0.04] p-5 transition duration-300 hover:-rotate-[1deg] hover:scale-[1.02] sm:rounded-[1.5rem] sm:p-6 ${
+                    index % 2 === 0
+                      ? "border-[#d8a25e]/20"
+                      : "border-white/10"
+                  }`}
+                >
+                  <div className="absolute inset-0 opacity-0 transition group-hover:opacity-100 bg-white/5" />
 
-                  <h3
-                    className={`${cormorant.className} mt-3 text-3xl font-semibold`}
-                  >
-                    {item.title}
-                  </h3>
+                  <div className="relative">
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]/70">
+                      {step.number}
+                    </p>
 
-                  <p className="mt-4 text-sm leading-6 text-white/75 sm:text-base sm:leading-7">
-                    {item.description}
-                  </p>
+                    <h3
+                      className={`${cormorant.className} mt-3 text-3xl font-semibold`}
+                    >
+                      {step.title}
+                    </h3>
+
+                    <p className="mt-4 text-sm leading-6 text-white/75 sm:text-base sm:leading-7">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-[1.5rem] border border-white/10 bg-white/[0.04] p-6 sm:p-8">
+            <p className="text-[10px] uppercase tracking-[0.25em] text-[#f2d3a2]/70">
+              The result
+            </p>
+
+            <h2
+              className={`${cormorant.className} mt-3 text-3xl font-semibold sm:text-4xl`}
+            >
+              A session worth releasing
+            </h2>
+
+            <p className="mt-4 max-w-3xl leading-7 text-white/75">
+              The final goal is simple: create a live session that gives the
+              artist a strong performance, a real band behind them, and a piece
+              of content worth putting into the world through Houseband/Live.
+            </p>
           </section>
         </div>
       </main>
